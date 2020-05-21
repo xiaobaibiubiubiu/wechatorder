@@ -1,0 +1,57 @@
+<view class="container">
+	<view class="header">
+  <view class="userinfo">
+    <button class='login' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像 </button>
+    <block wx:else>
+      <!-- <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image> -->
+      <!-- <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
+      <open-data type="userAvatarUrl" class="userinfo-avatar" background-size="cover"></open-data>
+      <open-data type="userNickName" class="userinfo-nickname"></open-data>
+    </block>
+  </view>
+	</view>
+	 <!-- <view class="section">
+		<view class="line judgement">我的评价</view>
+	</view>  -->
+  <canvas  canvas-id="shareImg" style="borde-radius:10px;width:545px;height:771px"></canvas>
+	<view class="section">
+		<!-- <view class="line judgement">帮助与反馈</view> -->
+		<!-- <view class="line judgement">在线客服<text class="tl">9:00 - 23:00</text></view> -->
+    <view class="line judgement">
+    <navigator url="/page/mine/aboutme" hover-class="navigator-hover">关于我们</navigator>
+    </view>
+	</view>
+   <!-- <view>  
+     生成分享图 这里的操作是把canvas绘制的图预览出来
+		 <button class='shareBtn' type="primary" bindtap='shareApp'>分享小程序</button>
+	</view>   --> 
+  
+  <!-- 预览分享图 -->
+  <!-- 刚开始是隐藏的 生成分享图之后显示, 用一个布尔变量来控制 -->
+  <view hidden='{{shareHidden}}' class='preview'>
+    <view class='closeShare' bindtap='closeShare'>
+        <image src='../../imgs/share/cross.png'></image>
+    </view>
+    <image src='{{prurl}}'  class='qrcode qrCodeBg' mode='widthFix'></image>
+    <view class='flex-row space-around operation'>
+      <!-- <button type='primary'class="shareBtn" bindtap='shareToCommu'>朋友圈分享</button> -->
+      <button type='primary' bindtap='saveToPhone'>保存到相册，分享朋友圈</button>
+      <!-- <view class='shareToQ' bindtap='shareToCommu'>
+        <image src='../../imgs/share/quan.png'></image>
+      </view> -->
+      <!-- <view class='saveToAlbum' bindtap='saveToPhone'>
+        <image src='../../imgs/share/album.png'></image>
+      </view> -->
+    </view>
+  </view>   
+
+
+
+  <!-- <button class='login' hidden='{{!hasUserInfo && canIUse}}' bindtap='exituser'>退出当前用户</button>
+  <view class="drawer_screen" data-statu="close" wx:if="{{showexit}}"></view>
+  <view  class='exitif' hidden='{{exitif}}'>
+  <text class='exittext'>是否退出当前用户?</text>
+  <button class='cancelexit' bindtap='canexit'>取消</button>
+  <button class='submitexit' bindtap='subexit'>确定</button> -->
+  <!-- </view> -->
+</view>

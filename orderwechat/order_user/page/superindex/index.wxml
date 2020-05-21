@@ -1,0 +1,46 @@
+<view class="header_search" bindtap="search">
+  <view class="search">
+  <image class="search_icon" src="/imgs/search/search.png"></image>
+    请输入商圈名/美食名搜索相关内容 
+  </view>
+</view>
+<view class="container">
+  <!-- <view class="label">- 所在城市 -</view> -->
+  <view class="banner">
+    <image src="/imgs/city/citybackground.jpg"></image>
+    <view class="cityInfo">
+      <text style="font-size:32rpx">{{currentCity}}</text>
+    </view>
+  </view>
+  <view class="resaurant" >
+    <view class="label">- 附近餐厅 -</view>
+   <view class="res_con">
+      <!-- <navigator 
+      class="res_detail border" 
+      wx:for="{{list}}
+      url='../index/index?uid={{item.uid}}'
+      > -->
+      <view class='res_detail border' wx:for="{{list}}">
+        <view class="top_con" bindtap="gotoGroup" data-id='group{{item.uid}}' data-taxrate='{{item.tax_rate}}'>
+          <image src="https://bjshuyiyuan.top{{item.head}}"></image>
+          <view class="top_con_right">
+            <view class="item_name">{{item.groupname}}</view>
+              <view class="item_price">
+              <text wx:if="{{item.km != ''}}"  style="margin-right:20rpx">距离：{{item.distance}}km</text>
+              <text>15元/人</text>
+            </view>
+            <view class="item_desc">{{item.desc}}</view>
+          </view> 
+        </view>
+        <view class="bot_label">
+          <text wx:for="{{item.label}}">{{item.name}}</text>
+        </view>
+    <!-- </navigator> -->
+    </view>
+  </view>
+  <navigator class="more_rest" url="../allrest/rest?id={{first.content.id}}" hover-class="none">
+     <text>查看全部餐厅</text>
+     <image src="/imgs/search/arrowright.png"></image>
+  </navigator>
+</view>
+</view>

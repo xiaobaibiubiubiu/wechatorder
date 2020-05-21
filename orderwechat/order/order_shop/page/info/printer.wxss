@@ -1,0 +1,115 @@
+/*打印机的基本信息*/
+.printer-info{
+  font-size: 30rpx;
+  color: #333;
+  padding: 25rpx;
+}
+.printer-info.printer-info-title{
+  padding-left: 20rpx;
+}
+/*“编辑”按钮*/
+.edit-btn{
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  float: right;
+  text-align: center;
+  font-size: 25rpx;
+  margin-bottom: 25rpx;
+  margin-right: 15rpx;
+}
+/*"测试打印机按钮"*/
+.edit-test{
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  
+  text-align: center;
+  font-size: 25rpx;
+  margin-bottom: 25rpx;
+}
+/*打印机图片*/
+.printer-img{
+  padding-left: 40rpx;
+}
+.printer-img input{
+  padding-bottom: 0;
+}
+.printer-img__title{
+  margin-bottom: 5rpx;
+}
+.printer-form{
+  font-size: 35rpx;
+  color: #333;
+}
+.bottom-space{
+  height: 100%;
+}
+.printer-img.intro{
+  border: 1rpx solid #ccc;
+  border-radius: 5px;
+}
+.checkboxs{
+  margin-top:30rpx;
+}
+.checkboxs checkbox{
+  margin-left: 30rpx;
+}
+.btn-area{
+  width:350rpx;
+  /* margin: 50rpx auto; */
+  float:left;
+  margin-left: 10rpx;
+
+}
+.btn-area1{
+  width:350rpx;
+  margin: 20rpx auto;
+}
+.btn-area button{
+  margin: 20rpx 0;
+}
+.edit-btn{
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  float: right;
+  text-align: center;
+  font-size: 25rpx;
+  margin-bottom: 25rpx;
+}
+.show{
+  display: block;
+}
+.showpar{
+  display: flex;
+}
+.hide{
+ display: none;
+}
+.printerImg{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 0 auto;
+  padding: 0rpx 0rpx 40rpx 0rpx;
+}
+.printer {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.ownerName{
+  margin: 20rpx auto 0;
+  text-align: center
+}
+.picker{
+  padding-top: 0px !important;
+}
+.showImg{
+  width:50rpx;
+  height:40rpx;
+  padding-right: 4rpx; 
+}
+.no-printer{
+  text-align: center;
+}

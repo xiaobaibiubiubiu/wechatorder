@@ -1,0 +1,132 @@
+<!--pages/order/order.wxml-->
+<view>
+  <view id="nearby" class="section section-big nearby">
+    <view class='go-center'>
+      <view class='tab-box'>
+        <view bindtap='changeTab' data-index="0" class="go-center {{tabIndex==0?'active-color':'unactive-color'}}" style='width:50%'>进行中</view>
+       
+        <view bindtap='changeTab' data-index="2" class="go-center {{tabIndex==2?'active-color':'unactive-color'}}" style='width:50%'>已完成</view>
+      </view>
+    </view>
+
+    <view class='gobacknav' catchtap='returnTop'>
+      <text>回顶部</text>
+    </view>
+
+    <!-- 进行中部分 -->
+    <view wx:if="{{tabIndex==0}}">
+      <scroll-view scroll-y="true" scroll-with-animation='true' class='scrollarea' scroll-top='{{topNum}}'>
+        <view class='searchorderid' bindtap='searchorderid'>
+          <image class='search_icon' src='/imgs/search/search.png'></image>
+          请输入您要查询的订单号
+        </view>
+          <view class="shop" wx:key="{{o_id}}" wx:for="{{order}}" wx:for-item="ordersub">
+            <navigator url='../order/ordernumber?o_id={{ordersub.o_id}}'>
+              <view class='bigview'>
+                <view class="card-box">
+                  <view class="card-fetch">
+                    <view class="card-left-bar">
+                      <label>订</label>
+                      <label>单</label>
+                      <label>号</label>
+                    </view>
+                  </view>
+                  <view>
+                    <view class='go-top-10'>
+                      <label class='number-card'>{{ordersub.wait_num}}</label>
+                    </view>
+                  </view>
+                </view>
+                <view class='myorder'>
+                  <view class='orderprice'>总价{{coin}}{{ordersub.total_money}}</view>
+                  <view class='ordernum'>数量：{{ordersub.goods_count}}</view>
+                  <view class='ordernum'>备注：{{ordersub.user_remarks}}     </view>
+                </view>
+              </view>
+
+              <view class='orderdetail'>
+                <view wx:for="{{ordersub.detail}}" wx:for-index="oid" wx:key="{{oid}}" class='detail-list flex-row'>
+                  <text>{{item.goodName}} x{{item.count}}</text>
+                  <text wx:if="{{item.is_pack ==1}}" class='pack'>(打包x{{item.pack_num}})</text>
+                </view>
+              </view>
+            </navigator>
+            <view >
+             <view wx:if="{{ordersub.order_status==0}}">
+              <form bindsubmit="submoney" bindtap="onChangeShowState" report-submit='true'>
+              <button  form-type="submit" data-o_id="{{ordersub.o_id}}" size="mini" class='submoney' > 确认收款</button>
+              </form>
+             <form bindsubmit="suborder" bindtap="onChangeShowState" report-submit='true'>
+              <button  form-type="submit" data-o_id="{{ordersub.o_id}}" size="mini" disabled="true" class='suborder'>通知取餐</button>
+            </form>
+            
+              
+            </view>
+
+            <view wx:if="{{ordersub.order_status==1}}">
+               <form bindsubmit="submoney" bindtap="onChangeShowState" report-submit='true'>
+              <button  form-type="submit" data-o_id="{{ordersub.o_id}}" size="mini" disabled="true" class='submoney'> 确认收款</button>
+              </form>
+             <form bindsubmit="suborder" bindtap="onChangeShowState" report-submit='true'>
+              <button  form-type="submit" data-o_id="{{ordersub.o_id}}" size="mini" class='suborder' >通知取餐</button>
+            </form>
+           
+             
+            </view>
+           </view>
+          </view>
+        <view class="loading" hidden='{{hasorder}}'>暂无订单</view>
+      </scroll-view>
+    </view>
+
+    
+    <!-- 已完成部分 -->
+    <view class='scrollcontent' wx:if="{{tabIndex==2}}">
+      <scroll-view scroll-y="true" scroll-with-animation='true' class='scrollarea' scroll-top='{{topNum}}' bindscrolltolower="ScrollLower">
+        <view class="shop" wx:key="{{o_id}}" wx:for="{{order}}" wx:for-item="orderdone">
+          <navigator url='../order/orderdone?o_id={{orderdone.o_id}}'>
+            <view class='ordertime'>订单时间：{{orderdone.pay_time}}</view>
+            <view class='bigview'>
+            <view class="card-box">
+                  <view class="card-fetch">
+                    <view class="card-left-bar">
+                      <label>订</label>
+                      <label>单</label>
+                      <label>号</label>
+                    </view>
+                  </view>
+                  <view>
+                    <view class='go-top-10'>
+                      <label class='number-card'>{{orderdone.wait_num}}</label>
+                    </view>
+                  </view>
+                </view>
+              <view>
+                <open-data type="userAvataUrl"></open-data>
+              </view>
+              <view class='myorderdone'>
+                <view class='orderdetaildone' wx:for="{{orderdone.detail}}" wx:key="{{oid}}">
+
+                 <view> {{item.goodName}} x{{item.count}}</view>
+                  <text wx:if="{{item.is_pack ==1}}" class='pack'>(打包x{{item.pack_num}})</text>
+                </view>
+              </view>
+              <view style='width=30%'>
+                <view class='orderprice'>总价{{coin}}{{orderdone.total_money}}</view>
+                <view class='ordernum'>数量{{orderdone.goods_count}}</view>
+              </view>
+            </view>
+
+          </navigator>
+        </view>
+        <view class='loadingview' hidden="{{Loading}}">
+          <image class='imgs' src='/imgs/order/5-121204193R0-50.gif'></image>
+          <view class="loading">正在载入更多...</view>
+        </view>
+        <view class="loading complete" hidden="{{LoadingComplete}}">已加载全部</view>
+      </scroll-view>
+    </view>
+
+  </view>
+
+</view>

@@ -1,0 +1,9 @@
+{
+  "window": {
+    "navigationBarBackgroundColor": "#192A3A",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#efefef",
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "菜品管理"
+  }
+}

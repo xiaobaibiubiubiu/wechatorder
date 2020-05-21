@@ -1,0 +1,531 @@
+/**
+ * 描    述：		定义广告相关的组件样式
+ * 作用范围: 		广告模块
+ * 组件：	广告信息添加，时间地点插件，表格，浮层，地区匹配餐厅
+ * 模块搜索关键字： =
+ * 作者：张琨 杨玥
+ */
+
+
+/* = 表单
+------------------------------------------ */
+
+
+/*张琨：分类选择推广餐厅*/
+
+.areas {
+    /* display: none; */
+    margin-top: 2px;
+}
+
+.orgs {
+    display: none;
+    margin-top: 2px;
+}
+
+#orgAllChoose,
+#hotelAllChoose {
+    margin-left: 25px;
+}
+
+#hotel {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+
+/*Kun:广告列表展示*/
+
+.data-table {
+    table-layout: fixed;
+}
+
+.data-table thead tr th,
+.data-table tbody tr td {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.data-table thead tr th {
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    padding: 2px 5px;
+}
+
+thead {
+    margin-top: 10px;
+}
+
+.data-table tbody tr td {
+    padding: 5px;
+    height: 45px;
+    font-weight: 400;
+}
+
+.tableScroll {
+    height: 650px;
+    /*height:auto;*/
+    overflow-y: hidden;
+}
+
+.adsListShow {
+    position: relative;
+    height: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.adsListShow thead,
+.adsListShow tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.adsListShow tbody {
+    display: block;
+    overflow-y: scroll;
+    height: 100%;
+    max-height: 300px;
+}
+
+
+/*Kun:更多详情展示*/
+
+.moreDetailShow {
+    display: none;
+}
+
+.checkMoreDetail:hover .moreDetailShow {
+    display: block !important;
+    z-index: 2;
+    position: absolute;
+    top: 50px;
+    right: 7%;
+    width: 500px;
+    height: 450px;
+    line-height: 40px;
+    overflow: auto;
+    /*margin-top: -60px;
+    margin-left: -90px;*/
+    padding: 20px 15px 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: left;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.checkMoreDetail:hover .moreDetailShow p {
+    border-bottom: 1px solid silver;
+}
+
+.checkMoreDetail:hover .moreDetailShow img {
+    width: 50%;
+    height: 50%;
+}
+
+
+/* 这是针对缺省样式 (必须的) */
+
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+
+/* 滚动条的滑轨背景颜色 */
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+/* 滑块颜色 */
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    /*background-color: transparent;*/
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+/* 滑轨两头的监听按钮颜色 */
+
+::-webkit-scrollbar-button {
+    background-color: transparent;
+    height: 3px;
+    border-radius: 10px;
+}
+
+
+/* 横向滚动条和纵向滚动条相交处尖角的颜色 */
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+
+/*选择餐厅按钮*/
+
+#hotelChooseBtn {
+    background-color: #18A665;
+    outline: none;
+    border-radius: 5px;
+}
+
+#hotelChooseBtn:hover,
+#hotelChooseBtn:focus {
+    background-color: #006600;
+}
+
+#hotelDisplayChoose,
+#orgDisplayChoose,
+#selectedHotel {
+    display: none;
+}
+
+#addressTable {
+    position: relative;
+    width: 50%;
+}
+
+#orgChooseBtn {
+    margin: 0px;
+}
+
+#orgDisplayChoose {
+    width: 152px;
+    margin-left: 65px;
+    margin-top: -5px;
+    padding-left: 0px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+}
+
+#hotelDisplayChoose {
+    width: 45%;
+    margin-left: 64px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#selectedHotel {
+    width: 25%;
+    height: 301px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.displayChoose {
+    margin-top: 5px;
+    /*border: 1px solid #333!important;*/
+    display: block!important;
+    overflow-y: hidden;
+    /*position: absolute;*/
+    position: relative;
+    /*top: 50%;
+    right: 50px;*/
+    /*width: 40%;
+    height: 50%;*/
+    /* width: 500px; */
+    float: left;
+    margin-right: 10px;
+    /* height: 300px; */
+    line-height: 40px;
+    overflow: auto;
+    /*margin-top: -100px;
+    margin-left: -100px;*/
+    padding: 10px 10px 5px 15px;
+    /**********************/
+    background: rgba(0, 0, 0, 0.6);
+    background-color: #FFFFFF;
+    color: black;
+    text-align: left;
+    font-size: 14px;
+}
+
+#orgShow,
+#hotelShow,
+#slHotelShow {
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    display: block;
+    overflow-y: scroll;
+    padding-left: 10px;
+}
+
+#orgShow {
+    height: 255px;
+}
+
+#hotelShow {
+    height: 280px;
+    margin-bottom: 5px;
+    /* border: 1px solid midnightblue; */
+}
+
+#slHotelShow {
+    height: 205px;
+    margin-top: -10px;
+}
+
+#orgShowList {
+    padding-left: 0;
+    margin-left: 0px;
+}
+
+#slHotelShowList {
+    padding-left: 0;
+    margin-left: 0px;
+}
+
+List {
+    padding-bottom: 5px;
+}
+
+#orgShow ul li,
+#hotelShow ul li {
+    list-style-type: none;
+    height: 40px;
+    float: left;
+}
+
+#slHotelShow ol li {
+    /* list-style-type: none; */
+    height: 40px;
+    float: left;
+    margin-left: 10px;
+    list-style-position: outside;
+    width: 90%;
+    border-bottom: 1px solid #99ccff
+}
+
+#orgShow ul li {
+    width: 100%;
+}
+
+#hotelShow ul li {
+    width: 30%;
+}
+
+#slHotelShow ol {
+    list-style-type: demical;
+}
+
+#orgShow ul li label input,
+#hotelShow ul li label input,
+#slHotelShow ol li label input,
+#selectAll input {
+    height: 17px;
+    width: 17px;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+#selectAll input {
+    margin-left: 0;
+}
+
+#orgDisplayChoose .btnDiv {
+    width: 150px;
+    /* width: 74px; */
+}
+
+
+/* #hotelDisplayChoose .btnDiv {
+    width: 74px;
+} */
+
+#selectedHotel p {
+    text-align: center;
+    font-size: 16px;
+    padding: 0px;
+}
+
+#selectedHotel .btnDiv {
+    width: 154px;
+}
+
+.btnDiv {
+    position: relative;
+    margin: 10px auto 0;
+    height: 34px;
+    /*border: 1px solid yellowgreen !important;*/
+}
+
+.sl_hotel button {
+    margin-top: 6px;
+}
+
+.delSlHotel {
+    margin-left: 5px;
+}
+
+.mybtn2 {
+    float: right;
+    margin: 0 10px;
+    background-color: #66ccff;
+    outline: none;
+    border-radius: 5px;
+    border: 0px;
+    width: 52px;
+    height: 30px;
+}
+
+.mybtn2:hover,
+.mybtn2:focus {
+    background-color: #99ccff;
+    direction: none;
+    border: 0;
+    outline: none;
+}
+
+.mybtn {
+    float: left;
+    margin: 0 10px;
+    padding: 0 10px;
+    background-color: #18A665;
+    outline: none;
+    border-radius: 5px;
+    border: 0px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.mybtn:hover,
+.mybtn:focus {
+    background-color: #006600;
+    direction: none;
+    border: 0;
+    outline: none;
+}
+
+.checkbox-inline span {
+    width: 180px;
+}
+
+
+/*end Kun*/
+
+
+/*杨玥*/
+
+
+/*调整输入框边距*/
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 15px;
+    margin-left: 5px;
+    line-height: 15px;
+}
+
+
+/*调整地址框*/
+
+.form-control,
+select {
+    width: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+
+/*按钮优化*/
+
+button.btn.submit-btn,
+button.btn.btn-return {
+    height: 40px;
+    width: 70px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-right: 5px;
+    text-align: center;
+    background-color: #18A665;
+}
+
+button.btn.submit-btn:hover,
+button.btn.btn-return:hover {
+    background-color: #006600;
+    border-color: #FFFFFF;
+}
+
+button.btn.submit-btn:focus,
+button.btn.btn-return:forcus {
+    outline: #FFFFFF !important;
+}
+
+.form-item,
+.form-horizontal {
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+/*ceshi统计*/
+hr{
+	border-top: 1px solid #8DB6CD;
+}
+
+/*cloud统计表格排序按钮*/
+.numsort,.pricesort{
+	display: none;
+}
+.numtd:hover .numsort{
+	display: block !important;
+	position: absolute;
+	width: auto;
+	height: auto;
+	font-size: auto;
+	top: 15px;
+	padding: 5px;
+	border: 1px solid #E8E8E8;
+	background-color: white;
+}
+.numtd:hover .pricesort{
+	display: block !important;
+	position: absolute;
+	width: auto;
+	height: auto;
+	font-size: 12px;
+	top: 15px;
+	padding: 5px;
+	border: 1px solid #E8E8E8;
+	background-color: white;
+}
+ul{
+	list-style-type: none;
+	margin: 0px;
+}
+ul li{
+	cursor: pointer;
+}
+.triangle-up {
+        display: inline-block;
+        border: 5px solid #FFFFFF;
+        border-top-color: #285E8E;
+        top: 1px;
+        border-bottom: 2px;
+    }

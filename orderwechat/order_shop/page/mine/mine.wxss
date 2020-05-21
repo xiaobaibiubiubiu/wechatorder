@@ -1,0 +1,130 @@
+.header {
+	background: #192A3A;
+	padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+.header .avatar {
+	display: block;
+	margin: 0 auto;
+	width: 160rpx;
+	height: 160rpx;
+	border-radius: 50%;
+	border: 2px solid #fee767;
+}
+.header .nickname {
+	color: #000;
+	font-size: 22px;
+	line-height: 2.4;
+	text-align: center;
+}
+/**获取用户信息**/
+button.login{
+  margin-top: 30px;
+  font-size: 14px;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 250rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.userinfo-nickname {
+  color: #ffffff;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.drawer_screen {  
+  width: 100%;  
+  height: 100%;  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  z-index: 1000;  
+  background: #000;  
+  opacity: 0.5;  
+  overflow: hidden;  
+}
+.exitif{
+  position: fixed;
+  top: 400rpx;
+  left: 168rpx;
+  z-index: 1001;
+  width: 440rpx;
+  margin:0 auto;
+  background-color:#ffffff; 
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding-top: 10px;
+}
+.exittext{
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+  margin-left: 120rpx;
+}
+button.cancelexit{
+  float: left;
+  width: 220rpx;
+  font-size: 14px;
+  margin-top: 10px;
+}
+button.submitexit{
+  float: right;
+  width: 220rpx;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #fe0000;
+}
+.section {
+	padding: 0;
+	color: #2e2e2e;
+	font-size: 30rpx;
+}
+.section .line {
+	margin-left: 30rpx;
+	padding-right: 30rpx;
+	line-height: 3;
+	border-bottom: 1px solid #efefef;
+}
+.section .line:last-child {
+	border-bottom: none;
+}
+.section .line:before {
+	content: '>';
+	float: right;
+	color: #aaa;
+	margin-left: 20rpx;
+}
+.section .line .tl {
+	float: right;
+	color: #aaa;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.content{
+  margin-left: 30rpx;
+  padding: 20rpx 0 20rpx 20rpx;
+  border-bottom: 1px solid #f3f3f3;
+}
+.pull-right{
+  margin-left: auto;
+}
+.sm-img{
+  margin-right: 10rpx;
+  width: 40rpx;  
+  height:40rpx;
+}   

@@ -1,0 +1,205 @@
+<include file="Public/head" />
+
+<body class="no-skin">
+	<include file="Public/header" />
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch(e) {}		
+		</script>
+		<script type="text/javascript">
+			//document.getElementById("btn").setAttribute("disabled", true);
+			function Checknp(){
+				 var printername = document.getElementById("printername").value;
+         var printerpsd = document.getElementById("printerpsd").value;
+          $.ajax({
+                url:'./bindPrinter',
+                type:"get",
+                data:{printername:printername,printerpsd:printerpsd,},
+                dataType:"json",
+                success:function($response){
+                if($response['error']==0){
+                   		$("#tip").html("添加成功");
+                    }
+                   	else if($response['error']==11){
+                   		$("#tip").html("sign验证失败，请联系管理员");
+                   	}
+                   	else if($response['error']==12){
+                   		$("#tip").html("缺少必要的参数，请联系管理员");
+                   	}
+                   	else if($response['error']==16){
+                   		$("#tip").html("不支持k1,k2,k3机型，请联系管理员");
+                     document.getElementById("btn").removeAttribute("disabled");
+                   	}
+                   	else if($response['error']==18){
+                   		$("#tip").html("access_token已过期，请联系管理员");
+                   		//document.getElementById("btn").setAttribute("disabled", true);
+                   		
+                   	}
+                   	else if($response['error']==33){
+                   		$("#tip").html("uuid不合法，请联系管理员");
+                   	}
+                       else if($response['error']==34){
+                   		$("#tip").html("非法参数，请联系管理员");
+                   	}
+                   },
+                    });
+               
+               }
+
+			
+			</script>
+
+			<script type="text/javascript">
+             	
+               function checkName(ssn){
+               	if(ssn.length<=0){
+               		document.getElementById("nameErr").innerHTML="<font color='red'>请输入用户名！</font>"
+               		myform.s_name.focus();
+                   return false;
+               	}else{
+               		document.getElementById("nameErr").innerHTML="";
+               		return true;
+               	}
+               } 
+               function checkPsd(b){
+               	if(b.length<=0){
+               		document.getElementById("psdErr").innerHTML="<font color='red'>请输入密码！</font>"
+
+               		myform.s_password.focus();
+                   return false;
+                    
+               	}else if(b.length<6){
+               		document.getElementById("psdErr").innerHTML="<font color='red'>请输入6位以上密码！</font>"
+
+               		myform.s_password.focus();
+                   return false;
+
+               	}
+               	else{
+               		document.getElementById("psdErr").innerHTML="";
+               		return true;
+               	}
+               }
+               function checkStoreName(c){
+               	//var s_name = document.getElementById("s_name").value;
+               	if(c.length<=0){
+               	
+               		document.getElementById("storeErr").innerHTML="<font color='red'>请输入档口名称！</font>"
+
+               		myform.s_storename.focus();
+                   return false;
+                    
+               	}else{
+               		document.getElementById("storeErr").innerHTML="";
+               		return true;
+               	}
+               }
+               function noprinter(){
+                document.getElementById("printername").disabled=true;
+                document.getElementById("printerpsd").disabled=true;
+                document.getElementById("btn").disabled=true;
+                document.getElementById("test").disabled=true;
+                document.getElementById("printername").value="";
+                document.getElementById("printerpsd").value="";
+               }
+              
+               function yesprinter(){
+                document.getElementById("btn").disabled=true;
+                document.getElementById("printername").disabled=false;
+                document.getElementById("printerpsd").disabled=false;
+               }
+               function uploadpic(){
+                document.getElementById("btn").disabled=false;
+               }
+            
+			</script>
+              
+		<include file="Public/sidebar" />
+		<div class="main-content">
+			<div class="main-content-inner">
+				<!-- #section:basics/content.breadcrumbs -->
+				<include file="Public/breadcrumbs" />
+
+				<!-- /section:basics/content.breadcrumbs -->
+				<div class="page-content">
+					<include file="Public/set" />
+					<!-- /section:settings.box -->
+          
+
+<form method="post" action="AddStore" name="myform" enctype="multipart/form-data">
+    
+    <table  align="center" border="0" width="50%" style="border-collapse:separate; border-spacing:0px 20px;" >
+
+  <tr>
+    <td ><span>用户名：</span> </td>
+    <td > <input type="text" name="s_name" autofocus="autofocus" id="s_name" onblur="checkName(this.value.toLowerCase())"/><span id="nameErr"></span> </td>
+    
+  </tr>
+
+  <tr>
+    <td width="30%"><span>用户密码：</span></td>
+    <td width="70%"><input type="password" name="s_password"  id="s_password" onblur="checkPsd(this.value.toLowerCase())"/><span id="psdErr"></span> </td>
+  </tr>
+
+   <tr>
+    <td width="30%">档口名称：</td>
+    <td width="70%"> <input type="text" name="s_storename" id="s_storename" onblur="checkStoreName(this.value.toLowerCase())"/><span id="storeErr"></span></td>
+  </tr>
+
+   <tr>
+    <td width="30%">是否添加打印机:</td>
+    <td width="70%"> 
+         <input name="printer" type="radio" value="1" checked="checked" onclick="yesprinter();"  <if condition="$_SESSION['exist_print'] eq 0">disabled</if>>是  
+         <input name="printer" type="radio" value="0" onclick="noprinter();"  <if condition="$_SESSION['exist_print'] eq 0">disabled</if>>否</span></td>
+  </tr>
+
+
+ <!--  <tr>                <div class="form-group"  >
+         <label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 是否添加打印机 </label>
+
+         <div class="col-sm-9">
+                                       <input name="printer" type="radio" value="1" checked="checked" onclick="yesprinter();"  <if condition="$_SESSION['exist_print'] eq 0">disabled</if>>是  
+                                        <input name="printer" type="radio" value="0" onclick="noprinter();"  <if condition="$_SESSION['exist_print'] eq 0">disabled</if>>否 
+                                    </div>
+        </div></tr> -->
+
+
+
+
+   <tr>
+    <td width="30%"> 打印机终端号:</td>
+    <td width="70%"><input id="printername" type="text" name="printername" class="printername" <if condition="$_SESSION['exist_print'] eq 0">readonly
+          </if>> </td>
+
+  </tr>
+ 
+
+   <tr>
+    <td >打印机密钥:</td>
+    <td ><input id="printerpsd" type="text" id="printerpsd" name="printerpsd" class="printername" onblur="Checknp()"  <if condition="$_SESSION['exist_print'] eq 0">readonly</if> > <p id="tip" >{$tip}</p> <span><button type="button" id="test" onclick="Checknp()" <if condition="$_SESSION['exist_print'] eq 0">disabled</if>>测试</button></span></td>
+   
+   <tr>
+    <td width="30%"><span>上传图片:</span></td>
+    <td width="70%"><input type="file" name="pic_url"  onclick="uploadpic();" /></td>
+   </tr>
+   <tr>
+    <td width="30%"><button id="btn" class="btn" type="submit"  disabled="false">确定提交</button></td>
+   </tr>
+  </table> 
+  </form>
+      </div>
+    </div>
+  </div>
+		<!-- /.main-content -->
+		<include file="Public/footer" />
+
+	
+	<!-- /.main-container -->
+
+	<include file="Public/footerjs" />
+
+</body>
+
+</html>

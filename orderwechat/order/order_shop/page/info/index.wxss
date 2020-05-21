@@ -1,0 +1,76 @@
+.basic-info{
+  font-size: 30rpx;
+  color: #333;
+  padding: 25rpx;
+}
+.basic-info .basic-title{
+  padding-left: 20rpx;
+}
+.section{
+  padding-left: 40rpx;
+}
+.section input{
+  padding-bottom: 0;
+}
+.section__title{
+  margin-bottom: 5rpx;
+}
+.food-form{
+  font-size: 35rpx;
+  color: #333;
+}
+.bottom-space{
+  height: 100%;
+}
+.section .intro{
+  border: 1rpx solid #ccc;
+  border-radius: 5px;
+}
+.checkboxs{
+  margin-top:30rpx;
+}
+.checkboxs checkbox{
+  margin-left: 30rpx;
+}
+.btn-area{
+  width:300rpx;
+  margin: 50rpx auto;
+}
+.btn-area button{
+  margin: 20rpx 0;
+}
+.edit-btn{
+  width: 120rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  float: right;
+  text-align: center;
+  font-size: 25rpx;
+  margin-bottom: 25rpx;
+}
+.show{
+  display: block;
+}
+.showpar{
+  display: flex;
+}
+.hide{
+ display: none;
+}
+.shopIcon{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 0 auto;
+}
+.userinfo-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.ownerName{
+  margin: 20rpx auto 0;
+  text-align: center
+}
+.picker{
+  padding-top: 0px !important;
+}

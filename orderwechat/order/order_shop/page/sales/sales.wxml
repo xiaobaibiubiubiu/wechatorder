@@ -1,0 +1,196 @@
+<view class="container">
+  <view class="header flex-row space-around">
+    <view class="tab {{nowtab=='总体统计' ? 'tabActive' : ''}}" bindtap="switchTabs" data-nowtab='总体统计'>总体统计</view>
+    <view class="tab {{nowtab=='优差查询' ? 'tabActive' : ''}}" bindtap="switchTabs" data-nowtab='优差查询'>优差查询</view>
+    <view class="tab {{nowtab=='单菜查询' ? 'tabActive' : ''}}" bindtap="switchTabs" data-nowtab='单菜查询'>单菜查询</view>
+  </view>
+
+  <view class="content" wx:if="{{nowtab=='总体统计' || item.status==nowtab}}">
+    <view class="content-container" id="">
+      <scroll-view class="" scroll-y="true">
+        <view class='saleSection saleSection1'>
+          <view class='infoTitle'>销售额统计</view>
+          <view class='totalSale flex-row space-around'>
+            <view class='totalBlock'>
+              <view class='period'>今日</view>
+              <view class='staData'>{{overallSale.todaySale}}</view>
+            </view>
+            <view class='totalBlock'>
+              <view class='period'>本周</view>
+              <view class='staData'>{{overallSale.weekSale}}</view>
+            </view>
+            <view class='totalBlock'>
+              <view class='period'>本月</view>
+              <view class='staData'>{{overallSale.monthSale}}</view>
+            </view>
+          </view>
+        </view>
+
+        <view class='saleSection saleSection2'>
+          <view class='infoTitle'>近一周销售额</view>
+          <view class='staCanvas'>
+            <!--绘图-->
+            <canvas canvas-id="weekcolumnCanvas" class="canvas"></canvas>
+          </view>
+        </view>
+
+        <view class='saleSection saleSection2'>
+          <view class='infoTitle'>近六个月销售额</view>
+          <view class='staCanvas'>
+            <!--绘图-->
+            <canvas canvas-id="monthcolumnCanvas" class="canvas"></canvas>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{nowtab=='优差查询' || item.status==nowtab}}">
+    <view class="content-container" id="">
+      <scroll-view class="" scroll-y="">
+        <view class='condition flex-row'>
+          <text class='title'>选择时间段</text>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{timePeriod}}" range-key="periodName">
+            <view class="picker">
+              {{timePeriod[index].periodName}}
+            </view>
+          </picker>
+        </view>
+        <view class='saleSection'>
+          <view class='condition flex-row'>
+            <view class='infoTitle'>销量前五菜品</view>
+            <view class='bbcondition'>
+              <button class="bbBtn {{fSalesCount==true?'nowBtn':''}}" bindtap='fSaleCount'>销量</button>
+              <button class="bbBtn {{fSalesCount==false?'nowBtn':''}}" bindtap='fSaleMoney'>销售额</button>
+            </view>
+          </view>
+          <view class='staCanvas {{bnodata==false?"show":"hide"}}'>
+            <!--绘图-->
+            <canvas canvas-id="bestFiveColumnCanvas" class="canvas"></canvas>
+          </view>
+          <view class='nodata {{bnodata==true?"show":"hide"}}'>
+            暂无数据
+          </view>
+        </view>
+        <view class='saleSection'>
+          <view class='condition flex-row'>
+            <view class='infoTitle'>销量末五菜品</view>
+            <view class='bbcondition'>
+              <button class="bbBtn {{tSalesCount==true?'nowBtn':''}}" bindtap='tSaleCount'>销量</button>
+              <button class="bbBtn {{tSalesCount==false?'nowBtn':''}}" bindtap='tSaleMoney'>销售额</button>
+            </view>
+          </view>
+          <view class='staCanvas  {{wnodata==true?"hide":"show"}}'>
+            <!--绘图-->
+            <canvas canvas-id="WorstThreeColumnCanvas" class="canvas"></canvas>
+          </view>
+          <view class='nodata {{wnodata==true?"show":"hide"}}'>
+            暂无数据
+          </view>
+        </view>
+
+        <view class='saleSection'>
+          <view class='condition flex-row'>
+            <view class='infoTitle'>销量为零的菜品</view>
+          </view>
+          <view class='' wx:if='{{!nozerodata}}'>
+            <view class="flex-row" >
+              <view class="bc_green tb_title">序号</view>
+              <view class="bc_red tb_title">菜品类型</view>
+              <view class="bc_blue tb_title">菜品名称</view>
+            </view>
+            <scroll-view class="zeroList" scroll-y="true">
+              <view class="" wx:for="{{zeroSaleGood}}" wx:for-item="zsGood" wx:for-index="index" wx:key="g_id" data-id="g{{zsGood.g_id}}">
+                <view class="flex-row">
+                  <view class="tb_item">{{index+1}}</view>
+                  <view class="tb_item">{{zsGood.gt_name}}</view>
+                  <view class="tb_item">{{zsGood.g_name}}</view>
+                </view>
+              </view>
+            </scroll-view></view>
+            <view class='nodata {{nozerodata==true?"show":"hide"}}'>
+              暂无数据
+            </view>
+          
+        </view>
+
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="content" wx:if="{{nowtab=='单菜查询' || item.status==nowtab}}">
+    <view class="content-container" id="">
+      <scroll-view class="" scroll-y="true">
+        <view class='condition flex-row space-around'>
+          <text class='title2'>菜品类型</text>
+          <text class='title2'>菜品名</text>
+          <text class='title2'>单价</text>
+        </view>
+        <view class='condition flex-row space-around'>
+          <!-- <text class='title2'>选择：   </text> -->
+          <view>
+            <picker bindchange="bindPickerChange0" value="{{classifyIndex}}" range="{{classify}}">
+              <view class="picker">
+                {{classify[classifyIndex]}}
+              </view>
+            </picker>
+          </view>
+          <view>
+            <picker bindchange="bindPickerChange1" value="{{goodIndex}}" range="{{goods}}">
+              <view class="picker">
+                {{goods[goodIndex]}}
+              </view>
+            </picker>
+          </view>
+          <view>
+            <view class='pricePicker'>
+              {{ goodsList[classifyIndex].goods[goodIndex].price}}
+            </view>
+          </view>
+        </view>
+        <!--后期加时间段-->
+        <!-- <view class='condition flex-row'>
+          <text class='title2'>时间段：</text>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{timePeriod}}" range-key="periodName">
+            <view class="picker">
+              {{timePeriod[index].periodName}}
+            </view>
+          </picker>
+        </view> -->
+        <view class='saleSection saleSection1'>
+          <view class='infoTitle'>销售额统计</view>
+          <view class='totalSale flex-row space-around'>
+            <view class='totalBlock'>
+              <view class='period'>今日</view>
+              <view class='staData'>{{singleFoodSale.todaySale}}</view>
+            </view>
+            <view class='totalBlock'>
+              <view class='period'>本周</view>
+              <view class='staData'>{{singleFoodSale.weekSale}}</view>
+            </view>
+            <view class='totalBlock'>
+              <view class='period'>本月</view>
+              <view class='staData'>{{singleFoodSale.monthSale}}</view>
+            </view>
+          </view>
+        </view>
+
+        <view class='saleSection saleSection2'>
+          <view class='infoTitle'>近一周销售额</view>
+          <view class='staCanvas'>
+            <!--绘图-->
+            <canvas canvas-id="sfWeekLineCanvas" class="canvas"></canvas>
+          </view>
+        </view>
+
+        <view class='saleSection saleSection2'>
+          <view class='infoTitle'>近六个月销售额</view>
+          <view class='staCanvas'>
+            <!--绘图-->
+            <canvas canvas-id="sfMonthLineCanvas" class="canvas"></canvas>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

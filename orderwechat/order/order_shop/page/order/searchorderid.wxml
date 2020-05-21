@@ -1,0 +1,75 @@
+<view class="container">
+	<view class="header">
+		<view class="searchorderid">
+			<input bindinput="inputSearch_id" placeholder="{{placeholder}}"  data-id='searchInfo' auto-focus/>
+		</view>
+		<button class="yellow" size="mini" hover-class="hover" loading="" plain="" disabled="{{!(searchWords.length||placeholder.length)}}"
+				bindtap="doSearch_id">搜索
+		</button>
+	</view>
+
+  <view id="result_order" class="result_order" hidden="{{!showResult}}">
+    <view class='wait_num' wx:for="{{order}}" wx:key="{{wait_num}}" wx:for-item="ordersub">
+      <navigator url='../order/ordernumber?wait_num={{ordersub.wait_num}}'>
+            <view class='bigview'>
+              <view class="card-box">
+                <view class="card-fetch">
+                  <view class="card-left-bar">
+                    <label>订</label>
+                    <label>单</label>
+                    <label>号</label>
+                  </view>
+                </view>
+                <view>
+                  <view class='go-top-10'>
+                    <label class='number-card'>{{ordersub.wait_num}}</label>
+                  </view>
+                </view>
+              </view>
+              <view class='myorder'>
+                <view class='orderprice'>总价{{coin}}{{ordersub.total_money}}</view>
+                <view class='ordernum'>数量：{{ordersub.goods_count}}</view>
+                <view class='ordernum'>备注：{{ordersub.user_remarks}}</view>
+              </view>
+            </view>
+
+            <view class='orderdetail'>
+              <view wx:for="{{ordersub.detail}}" wx:for-index="oid" wx:key="{{oid}}" class='detail-list flex-row'>
+                <text>{{item.goodName}} x{{item.count}}</text>
+                <text wx:if="{{item.is_pack ==1}}" class='pack'>(打包)</text>
+              </view>
+            </view>
+      </navigator>
+             <view >
+             <view wx:if="{{ordersub.order_status==0}}">
+             <form bindsubmit="submoney" bindtap="onChangeShowState" report-submit='true'>
+              <button  form-type="submit" data-o_id="{{ordersub.o_id}}" size="mini" class='submoney' > 确认收款</button>
+              </form>
+             <form bindsubmit="suborder" bindtap="onChangeShowState" report-submit='true'>
+              <button  form-type="submit" data-o_id="{{ordersub.o_id}}" size="mini" disabled="true" class='suborder'>通知取餐</button>
+            </form>
+             
+              
+            </view>
+
+            <view wx:if="{{ordersub.order_status==1}}">
+            <form bindsubmit="submoney" bindtap="onChangeShowState" report-submit='true'>
+              <button  form-type="submit" data-o_id="{{ordersub.o_id}}" size="mini" disabled="true" class='submoney' > 确认收款</button>
+              </form>
+             <form bindsubmit="suborder" bindtap="onChangeShowState" report-submit='true'>
+              <button  form-type="submit" data-o_id="{{ordersub.o_id}}" size="mini" class='suborder' >通知取餐</button>
+            </form>
+             
+              
+            </view>
+           </view>
+          </view>
+
+
+
+
+
+
+    <view class="loading">已经到底啦</view>
+  </view>
+</view>

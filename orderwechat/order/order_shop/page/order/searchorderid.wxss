@@ -1,0 +1,158 @@
+.container{
+  background: #fff;
+}
+/*搜索框外框*/
+.header {
+	display: -webkit-flex;
+	padding: 20rpx;
+	background: #fff;
+}
+
+/*搜索框*/
+.header .searchorderid {
+	-webkit-flex: 1;
+	color: #000;
+	font-size: 30rpx;
+	line-height: 40rpx;
+	padding: 10rpx;
+	border-radius: 10rpx;
+	background: #eee;
+}
+
+/*搜索框按钮*/
+.header button {
+	margin-left: 20rpx;
+	font-size: 30rpx;
+}
+
+/*搜索框输入字体*/
+.header input {
+	height: 30rpx;
+	min-height: 50rpx;
+}
+
+/*订单信息框上部分底框*/
+.bigview{
+  display:flex;
+  margin-top:13px; 
+}
+
+/*通知取餐&确认收款部分底框*/
+.go-center1{
+  font-size: 18px;
+  margin-left: 75rpx;
+  width: 80px;
+}
+
+/*付款号部分框*/
+.card-box{
+  display:flex;
+  width:35%;
+  height:65px;
+  background:#FEF9F4;
+  float: right;
+  margin-top: 5px;
+}
+
+/* 取款码 */
+.card-fetch{
+  width:27px;
+  background:#DE5F4B;
+  height:65px;
+  font-size:12px;
+  color:white;
+}
+
+/*付款号*/
+.card-left-bar{
+  width:14px;
+  padding:7px 10px;
+}
+.go-top-10{
+  margin-top:10px
+}
+.number-card{
+  font-size:30px;
+  padding:0px 10px
+}
+
+/*总价、数量、备注框*/
+.myorder{
+  height: 150rpx;
+  width: 35%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.orderprice{
+  margin-top:5px;
+  font-size: 16px;
+  color: #FF9C35;
+}
+.ordernum{
+  margin-top:5px;
+  font-size: 12px;
+  color: #666;
+}
+
+/*订单框中部：食物名称*/
+.orderdetail{
+  margin-top:5px;
+  font-size: 12px;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx 0;
+	border-top: 1rpx solid #efefef;
+}
+.orderdetail .detail-list{
+  font-size:35rpx;
+  line-height: 40rpx;
+  margin-top: 15rpx; 
+}
+.detail-list .pack,.orderdetaildone .pack{
+  color: #FF9C35;
+  margin-left: 15rpx;
+}
+
+/*底部：已经到底啦*/
+.loading{  
+  padding: 10rpx;  
+  text-align: center; 
+  margin: 1rpx 0rpx;
+}  
+
+/*通知取餐&确认收款颜色*/
+.sbtn-box{
+  width:20%;
+  display:flex;
+  font-size:30px;
+  color:white;
+}
+.active-color1{
+  
+  background: grey;
+  
+  color: white;
+}
+.unactive-color1{
+  background:  #DE5F4B;
+  
+  color: white;
+}
+.submoney{
+  font-size: 18px;
+  background: #DE5F4B;
+  color: white;
+  left: 270rpx;
+   margin-left:30rpx;
+ /* width: 80px;  */
+}
+.suborder{
+  font-size: 18px;
+  /* padding: 2px 5px;
+  margin-top:20rpx; */
+  background: #DE5F4B;
+  color: white;
+  left: 310rpx;
+  /*width: 80px;*/
+}

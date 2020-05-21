@@ -1,0 +1,110 @@
+label {
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+    margin-left: 3px;
+    margin-right: 2px;
+}
+
+.box-content {
+    width: 99%;
+    /* min-height: 120px; */
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.box-content div {
+    width: 50%;
+    height: 40px;
+    text-align: center;
+    float: left;
+    /* border: 1px solid red */
+}
+
+.box-button {
+    width: 100%;
+    padding-top: 10px;
+    float: left;
+    display: block;
+}
+
+.showBtn {
+    float: left;
+    height: 70px;
+    /* width: 150px; */
+    /* width: 30%; */
+    border: 4px solid white;
+    /* margin-left: 35px; */
+    margin-bottom: 10px;
+    color: white;
+    border-radius: 15px;
+}
+
+.showBtn2 {
+    float: left;
+    height: 70px;
+    width: 150px;
+    border: 4px solid white;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    color: white;
+    border-radius: 15px
+}
+
+.dangkou {
+    position: relative;
+    /* width: 650px; */
+    /* border: 1px solid yellow; */
+    float: left;
+}
+
+.sta-content {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #515151;
+}
+
+.sta-title {
+    text-align: center;
+    font-size: 14x;
+    color: white;
+    margin: 3px 0 1px;
+}
+
+.sale-percent {
+    position: relative;
+    /* width: 485px; */
+    height: 120px;
+    /* border: 1px solid green; */
+    float: left
+}
+
+.sale-info {
+    position: relative;
+    /* width: 1120px; */
+    /* width: 100%; */
+    /* border: 1px solid pink; */
+    float: left;
+}
+
+.switchBtn button {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    border: none;
+    margin-left: 10px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: orange;
+    color: white;
+    text-align: center;
+    outline: none;
+}
+
+.switchBtn button:hover {
+    background-color: #ff6600;
+}

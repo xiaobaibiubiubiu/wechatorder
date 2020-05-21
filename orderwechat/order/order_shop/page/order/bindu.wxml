@@ -1,0 +1,10 @@
+<view class="container">
+
+<form bindsubmit="bindu" report-submit='true'>
+<view class='login'><input type='text' name="username" auto-focus='true' placeholder='账号' confirm-confirm-type='done'></input></view>
+<view class='password'><input password='true' name="password" placeholder='密码' auto-focus='true' confirm-type='done'></input></view>
+<button class='log' form-type="submit" type="default">绑定</button>
+</form>
+<view class='error' hidden='{{error}}'>用户名或密码输入错误</view>
+<view class='error' hidden='{{binderror}}'>该用户已经绑定其他店家</view>
+</view>

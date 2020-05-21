@@ -1,0 +1,280 @@
+<include file="Public/head" />
+
+
+<body class="no-skin">
+
+    <include file="Public/header" />
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('main-container', 'fixed')
+            } catch (e) {}
+        </script>
+
+        <include file="Public/sidebar" />
+        <div class="main-content">
+            <div class="main-content-inner">
+                <!-- #section:basics/content.breadcrumbs -->
+                <include file="Public/breadcrumbs" />
+
+                <!-- /section:basics/content.breadcrumbs -->
+                <div class="page-content">
+
+                    <include file="Public/set" />
+
+                    <!-- /section:settings.box -->
+                    <div class="row">
+                        <!-- <div class="col-xs-12"> -->
+                        <!-- PAGE CONTENT BEGINS -->
+                        <!-- <div class="row"> -->
+
+                        <div id="accordion-sysinfo" class="accordion-style1 panel-group col-sm-6 col-md-6 col-lg-6 dangkou">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-sysinfo" href="#sysinfo">
+                                            <i class="ace-icon fa fa-angle-down bigger-110" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;档口名称
+                                        </a>
+                                    </h4>
+                                </div>
+
+                                <div class="panel-collapse collapse in" id="sysinfo">
+                                    <div class="panel-body">
+                                        <div class=" box-content row">
+                                            <volist name="storeList" id="v">
+                                                <div>
+                                                    {$v["s_storename"]}&nbsp;&nbsp;&nbsp;
+                                                    <a href="{:U('displayStore')}?s_id={$v['s_id']}" style="text-decoration: underline;" class="look">进入查看</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </div>
+                                            </volist>
+                                        </div>
+                                        <div class="box-button" style="border-top:1px solid green">
+                                            <div class="row">
+                                                <div class="col-sm-4 bt1 showBtn">
+                                                    <p class="sta-title">销量最好的菜</p>
+                                                    <p class="sta-content">{$mostDish}</p>
+                                                </div>
+                                                <div class="col-sm-4 bt2 showBtn">
+                                                    <p class="sta-title">销量最好的档口</p>
+                                                    <p class="sta-content">{$mostStore}</p>
+                                                </div>
+                                                <div class="col-sm-4 bt3 showBtn">
+                                                    <p class="sta-title">销量最差的菜</p>
+                                                    <p class="sta-content">{$lastDish}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-4 bt4 showBtn">
+                                                    <p class="sta-title">比上月销售额增长</p>
+                                                    <p class="sta-content">13%</p>
+                                                </div>
+                                                <div class="col-sm-4 bt5 showBtn">
+                                                    <p class="sta-title">销量最差的档口</p>
+                                                    <p class="sta-content">{$lastStore}</p>
+                                                </div>
+                                                <div class="col-sm-4 bt6 showBtn">
+                                                    <p class="sta-title">销量锐增的菜品</p>
+                                                    <p class="sta-content">羊肉串</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- </div> -->
+                        <script type="text/javascript" src="__PUBLIC__/qwadmin/js/showChart/show.js"></script>
+                        <div id="Facebook-info" class="accordion-style1 panel-group col-sm-6 col-md-6 col-lg-6 sale-percent">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#Facebook-info" href="#Facebook">
+                                            <i class="ace-icon fa fa-angle-down bigger-110" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;菜品销售比例图
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse in" id="Facebook">
+
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-7 col-md-7 col-lg-7"></div>
+                                            <div class="switchBtn col-sm-5 col-md-5 col-lg-5">
+                                                <button id='showBySalesCount'>按销量</button>
+                                                <button id='showBySalesMoney'>按金额</button>
+                                            </div>
+                                        </div>
+                                        <div style="text-align:center;clear:both;padding:0px;margin: 0px;">
+                                        </div>
+
+                                        <div style="margin:0 auto;" id="pieShow">
+                                            <table id='myTable5'>
+                                                <thead>
+                                                    <tr id="la">
+                                                        <th></th>
+                                                        <volist name='pie_count' id='v'>
+                                                            <th>{$v.store_name}</th>
+                                                        </volist>
+                                                        <th>其它</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th></th>
+                                                        <volist name='pie_count' id='vi'>
+                                                            <td>{$vi.sum}</td>
+                                                        </volist>
+                                                        <td>{$extra['sum']}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- <div class="col-lg-12"> -->
+                        <div id="accordion" class="accordion-style1 panel-group col-sm-12 sale-info">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            <i class="ace-icon fa fa-angle-down bigger-110" data-icon-hide="ace-icon fa fa-angle-down" data-icon-show="ace-icon fa fa-angle-right"></i> &nbsp;销售统计信息
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="panel-collapse collapse in" id="collapseOne">
+                                    <div id="officialnews" class="panel-body">
+                                        <table style="width: 1050px;height:200px; ">
+                                            <thead>
+                                                <tr style="background-color: rgb(248,248,248);">
+                                                    <td>店名：</td>
+                                                    <td id="month1">一月份</td>
+                                                    <td id="month2">二月份</td>
+                                                    <td id="month3">三月份</td>
+                                                    <td id="month4">四月份</td>
+                                                    <td id="month5">五月份</td>
+                                                    <td id="month6">六月份</td>
+                                                    <td id="month7">七月份</td>
+                                                    <td id="month8">八月份</td>
+                                                    <td id="month9">九月份</td>
+                                                    <td id="month10">十月份</td>
+                                                    <td id="month11">十一月份</td>
+                                                    <td id="month12">十二月份</td>
+                                                    <td id="he">合计</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <foreach name="orgInfo" item="v">
+                                                    <tr style="background: #dbdbdb;border:4px solid white;">
+                                                        <td>{$v.h_name}</td>
+                                                        <td>{$v.month01}</td>
+                                                        <td>{$v.month02}</td>
+                                                        <td>{$v.month03}</td>
+                                                        <td>{$v.month04}</td>
+                                                        <td>{$v.month05}</td>
+                                                        <td>{$v.month06}</td>
+                                                        <td>{$v.month07}</td>
+                                                        <td>{$v.month08}</td>
+                                                        <td>{$v.month09}</td>
+                                                        <td>{$v.month10}</td>
+                                                        <td>{$v.month11}</td>
+                                                        <td>{$v.month12}</td>
+                                                        <td>{$v.total}</td>
+                                                    </tr>
+                                                </foreach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                    <!-- PAGE CONTENT ENDS -->
+                </div>
+            </div>
+            <!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+
+    <include file="Public/footer" />
+
+    </div>
+    <!-- /.main-container -->
+
+    <include file="Public/footerjs" />
+    <!-- inline scripts related to this page -->
+
+    <!--   <script type="text/javascript">
+    $(function() {
+
+      $("#officialnews ul").html('<div class="ace-icon fa fa-spinner fa-spin orange"></div>');
+      $.ajax({
+        type: 'GET',
+        url: '{$Think.CONFIG.NEWS_URL}?callback=?',
+        success: function(data) {
+          $("#officialnews ul").html("");
+          $.each(data.news, function(i, news) {
+            $("#officialnews ul").append("<li>" + news.pre + "<a href=\"" + news.url + "\" title=\"" + news.title + "\" target=\"_blank\">" + news.title + "</a>" + news.time + "</li>");
+          });
+        },
+        error: function() {
+          $("#officialnews ul").html("");
+        },
+        dataType: 'json'
+      });
+
+      $("#update").click(function() {
+
+        $("#upmsg").html("");
+        $("#upmsg").addClass("ace-icon fa fa-refresh fa-spin blue");
+        $.ajax({
+          type: 'GET',
+          url: '{$Think.CONFIG.UPDATE_URL}?v={$Think.CONFIG.Version}&callback=?',
+          success: function(json) {
+            if (json.result == 'no') {
+              $("#upmsg").html("目前还没有适合您当前版本的更新！").removeClass();
+            } else if (json.result == 'yes') {
+              $("#upmsg").html("检查到新版本 " + json.ver + "，请前往“系统设置”->“<a  href=\"{:U('Update/update')}\">在线升级</a>”").removeClass();
+            }
+          },
+          error: function() {
+            $("#upmsg").html("悲剧了，网络故障，请稍后再试！").removeClass();
+          },
+          dataType: 'json'
+        });
+
+      });
+    })
+    $(function() {
+      $(".btn-info.submit").click(function() {
+        var content = $("#content").val();
+        if (content == '') {
+          bootbox.dialog({
+            title: '友情提示：',
+            message: "反馈内容必须填写。",
+            buttons: {
+              "success": {
+                "label": "确定",
+                "className": "btn-danger"
+              }
+            }
+          });
+          return;
+        }
+
+        $("#form").submit();
+      });
+    });
+  </script> -->
+</body>
+
+</html>

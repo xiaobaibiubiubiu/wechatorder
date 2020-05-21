@@ -1,0 +1,41 @@
+<view class="page-phone">
+  <view class="header">
+    <view class="wx-title">美味靓点</view>
+    <view class="wx-desc">为您打造智能化商圈点餐系统</view>
+    <image src="/imgs/aboutme/logo.jpg" class="logoimg"></image>
+  </view>
+
+  <view class="content">
+
+    <view class="wx-cell">
+      <view class="icon">
+        <image src="/imgs/aboutme/location.png" class="icon-postion" mode="aspectFit"></image>
+      </view>
+      <view class="cell-bd" bindtap="getLocation">北京市朝阳区平乐园100号北京工业大学</view>
+    </view>
+
+    <view class="wx-cell">
+      <view class="icon">
+        <image src="/imgs/aboutme/time.png" class="icon-postion" mode="aspectFit"></image>
+      </view>
+      <view class="cell-bd">9：00 - 18：00</view>
+    </view>
+
+    <view class="wx-cell">
+      <view class="icon">
+        <image src="/imgs/aboutme/email.png" class="icon-postion" mode="aspectFit"></image>
+      </view>
+      <view class="cell-bd">bokepad@163.com</view>
+    </view>
+
+    <view class="wx-cell" bindtap="calling">
+      <view class="icon">
+        <image src="/imgs/aboutme/phone.png" class="icon-postion" mode="aspectFit"></image>
+      </view>
+      <view class="cell-bd">18810599602/18811100322</view>
+    </view>
+  </view>
+  <view>
+    <image src="/imgs/aboutme/picture.jpg" class="pic-postion" mode="aspectFill"></image>
+  </view>
+</view>

@@ -1,0 +1,61 @@
+<!--pages/order/detail/detail.wxml-->
+<view >
+  <view class='go-center go-top-10' >
+    <view class="card-box">
+      <view class="card-fetch">
+        <view class="card-left-bar">
+          <label>付</label>
+          <label>款</label>
+          <label>号</label>
+        </view>
+      </view>
+      <view>
+        <view class='go-top-10'>
+          <label class='number-card'>{{order.wait_num}}</label>
+          <label class='statu-card'>待付款</label>
+        </view>
+        <view class='note-card'>
+          请您尽快付款
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 订单详情 -->
+  <view class='order-info' >
+    <view class='order-info-title'>订单详情</view>
+    <view class='cart-list-box' wx:for="{{order.detail}}" wx:for-index="id"  wx:key="unique">
+      <view class='list-info'>
+        <view>{{item.goodName}}</view>
+        <view wx:if="{{item.is_pack==1}}" style='font-size:30rpx;margin-left:10rpx'>(打包)</view>
+      </view>
+      <view style='width:50%;padding:8px;'>
+        <view style='float:right'>
+          <view style='color:#A3A3A3'>x {{item.count}}</view>
+          <view>{{coin}} {{item.goodPrice}}</view>
+        </view>
+      </view>
+    </view>
+     <view class='order-sum'>
+      <label>税率 </label>
+      <label class='order-sum-number activity-color'>{{taxRate}}%</label>
+    </view>
+    <view class='order-sum'>
+      <label>总计 </label>
+      <label class='order-sum-number activity-color'>{{coin}} {{order.total_money}}</label>
+    </view>
+  </view>
+  <view class='order-info'>
+    <!-- 本应动态请求，在此写死 -->
+    <view class='order-info-title'>订单信息</view>
+    <view class='order-info-title flex-display' >订单号码
+      <text style='color:black;margin-left:10px'>{{order.o_num}}</text>
+    </view>
+    <view class='order-info-title flex-display' >订单时间
+      <text class="order-info-li">{{order.sub_time}}</text>
+    </view>
+    <view class='order-info-title flex-display' wx:if='{{order.status==1}}' >支付时间
+      <text class="order-info-li">{{order.pay_time}}</text>
+    </view>
+  </view>
+
+</view>

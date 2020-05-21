@@ -1,0 +1,307 @@
+<include file="Public/head" />
+
+<body class="no-skin">
+	<include file="Public/header" />
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('main-container', 'fixed')
+			} catch(e) {}
+		</script>
+
+        <script type="text/javascript">
+           function checkName(ssn){
+               	//var s_name = document.getElementById("s_name").value;
+               	if(ssn.length<=0){
+               		//alert("用户名不能为空！请输入！");
+               		document.getElementById("nameErr").innerHTML="<font color='red'>请输入用户名！</font>"
+
+               		myform.name.focus();
+                   return false;
+                    
+               	}else{
+               		document.getElementById("nameErr").innerHTML="";
+               		return true;
+               	}
+               }
+
+            function checkPsd(b){
+               	//var s_name = document.getElementById("s_name").value;
+               	if(b.length<=0){
+               		//alert("用户名不能为空！请输入！");
+               		document.getElementById("psdErr").innerHTML="<font color='red'>请输入密码！</font>"
+
+               		myform.password.focus();
+                   return false;
+                    
+               	}else if(b.length<6){
+               		document.getElementById("psdErr").innerHTML="<font color='red'>请输入6位以上密码！</font>"
+
+               		myform.password.focus();
+                   return false;
+
+               	}
+               	else{
+               		document.getElementById("psdErr").innerHTML="";
+               		return true;
+               	}
+               }
+
+
+            function checkGroupName(c){
+               	//var s_name = document.getElementById("s_name").value;
+               	if(c.length<=0){
+               		//alert("用户名不能为空！请输入！");
+               		document.getElementById("groupNameErr").innerHTML="<font color='red'>请输入商圈名称！</font>"
+
+               		myform.groupname.focus();
+                   return false;
+                    
+               	}
+               	else{
+               		document.getElementById("groupNameErr").innerHTML="";
+               		return true;
+               	}
+               }
+
+            function checkDetailAddr(d){
+               	//var s_name = document.getElementById("s_name").value;
+               	if(d.length<=0){
+               		//alert("用户名不能为空！请输入！");
+               		document.getElementById("detailAddrErr").innerHTML="<font color='red'>请输入商圈名称！</font>"
+
+               		myform.detailaddr.focus();
+                   return false;
+                    
+               	}
+               	else{
+               		document.getElementById("detailAddrErr").innerHTML="";
+               		return true;
+               	}
+               }
+                function uploadpic(){
+                document.getElementById("btn").disabled=false;
+               }
+
+        </script>
+
+		<include file="Public/sidebar" />
+		<div class="main-content">
+			<div class="main-content-inner">
+				<!-- #section:basics/content.breadcrumbs -->
+				<include file="Public/breadcrumbs" />
+
+				<!-- /section:basics/content.breadcrumbs -->
+				<div class="page-content">
+					<include file="Public/set" />
+
+					<!-- /section:settings.box -->
+					<div class="row">
+						<div class="col-xs-12">
+							<!-- PAGE CONTENT BEGINS -->
+							<form name="myform" class="form-horizontal" action="{:U('update')}" method="post" enctype="multipart/form-data">
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 用户名 </label>
+									<div class="col-sm-9">
+										<input type="text" id="name" onblur="checkName(this.value.toLowerCase())"   <if condition="$member['uid'] eq 1">readonly
+										<else/> name="user"
+										</if>
+										class="rcol-xs-10 col-sm-5" value="{$member.user}">
+										<span id="nameErr"></span>
+										<input type="hidden" name="uid" value="{$member['uid']}">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<if condition="$member['uid'] eq 1"><span class="middle">无法修改</span></if>
+										</span>
+									</div>
+								</div>
+
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 用户组 </label>
+									<div class="col-sm-9">
+										<if condition="$member['uid'] eq 1">
+											<volist name="usergroup" id="val">
+												<if condition="$val['id'] eq $member['group_id']">
+													<input type="text" class="col-xs-10 col-sm-5" value="{$val['title']}" readonly>
+													<input type="hidden" name="group_id" id="group_id" class="col-xs-10 col-sm-5" value="{$member['group_id']}">
+												</if>
+											</volist>
+
+											<else/>
+											<select id="group_id" name="group_id" class="rcol-xs-10 col-sm-5">
+												<volist name="usergroup" id="val">
+													<option value="{$val['id']}" <if condition="$val['id'] eq $member['group_id']">selected="selected"
+										</if>
+										>{$val['title']}</option>
+										</volist>
+										</select>
+										</if>
+										<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">请慎重选择用户组</span>
+										</span>
+									</div>
+								</div>
+
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 用户密码 </label>
+									<div class="col-sm-9">
+										<input type="password" name="password" id="password" onblur="checkPsd(this.value.toLowerCase())" placeholder="用户密码"  class="col-xs-10 col-sm-5" value="">
+
+										<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">留空不修改</span>
+										</span>
+										<span id="psdErr"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-6"> 商圈名称 </label>
+									<div class="col-sm-9">
+										<input type="text" name="groupname" id="groupname" onblur="checkGroupName(this.value.toLowerCase())" placeholder="商圈名称" class="col-xs-10 col-sm-5" value="{$member['groupname']}">
+										<span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle"></span>
+										</span>
+										<span id="groupNameErr"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-6"> 货币选择 </label>
+									<div class="col-sm-9">
+										<select style="margin-left: 5px;" name="coin">
+											<volist name="coin" id="c"> 
+											<option value="{$c['c_id']}">{$c['c_name']}</option>
+											</volist>
+										</select>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-6"> 税率 </label>
+									<div class="col-sm-9">
+										<input type="text" name="taxrate" id="taxrate" placeholder="请输入税率%" class="col-xs-10 col-sm-5" value="">
+										<span style="position: relative;float: left;padding-top: 7px;">(单位：%)</span>
+										<span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle"></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-6"> 商圈地址 </label>
+									<div class="col-sm-9">
+										<!--<form class="form-inline">-->
+											<div data-toggle="distpicker" style="display: flex;">
+												<!--<div class="form-group">-->
+													<!--<label class="sr-only" for="province1">Province</label>-->
+													<select class="form-control" id="province1" name="province"></select>
+												<!--</div>-->
+												<!--<div class="form-group">-->
+													<!--<label class="sr-only" for="city1">City</label>-->
+													<select class="form-control" id="city1" name="city"></select>
+												<!--</div>-->
+												<!--<div class="form-group">-->
+													<!--<label class="sr-only" for="district1">District</label>-->
+													<select class="form-control" id="district1" name="district"></select>
+												<!--</div>-->
+											</div>
+										<!--</form>-->
+										<span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle"></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-6"> 详细地址 </label>
+									<div class="col-sm-9">
+										<input type="text" name="detailaddr" id="detailaddr" onblur="checkDetailAddr(this.value.toLowerCase())" placeholder="商圈详细地址" class="col-xs-10 col-sm-5" value="{$member['groupname']}">
+										<span class="help-inline col-xs-12 col-sm-7">
+                                                <span class="middle"></span>
+										</span>
+										<span id="detailAddrErr"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-4"> 头像 </label>
+									<div class="col-sm-9">
+										<input type="file" name="pic_url" onclick="uploadpic();" />
+										<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">仅支持jpg、gif、png、bmp、jpeg，且小于1MB。</span>
+										</span>
+									</div>
+
+								</div>
+								<!-- 超级管理员是否需要给商圈添加打印机-->
+
+<!-- 
+								<div class="form-group" >
+         <label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 是否需要打印机 </label>
+
+         <div class="col-sm-9">
+                                        <label><input name="printer" type="radio" value="1" />是 </label> 
+                                        <label><input name="printer" type="radio" value="0" />否 </label>
+                                    </div>
+        </div> -->
+							
+								<div class="space-4"></div>
+
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"  id="btn" disabled="false">
+                                    <i class="icon-ok bigger-110"></i>
+                                    提交
+                                </button> &nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset">
+                                    <i class="icon-undo bigger-110"></i>
+                                    重置
+                                </button>
+								</div>
+							</form>
+							<!-- PAGE CONTENT ENDS -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.page-content -->
+			</div>
+		</div>
+		<!-- /.main-content -->
+		<include file="Public/footer" />
+
+	</div>
+	<!-- /.main-container -->
+
+	<include file="Public/footerjs" />
+	<!-- inline scripts related to this page -->
+	<script src="http://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+	<script src="__PUBLIC__/qwadmin/js/distpicker.data.js"></script>
+	<script src="__PUBLIC__/qwadmin/js/distpicker.js"></script>
+	<script src="__PUBLIC__/qwadmin/js/main.js"></script>
+	<script src="__PUBLIC__/qwadmin/js/date-time/bootstrap-datepicker.js"></script>
+	<script src="__PUBLIC__/qwadmin/js/function.js"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$('#birthday').datepicker({
+				format: 'yyyy-mm-dd',
+				weekStart: 1,
+				autoclose: true,
+				todayBtn: 'linked',
+				language: 'cn'
+			});
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,320 @@
+/* pages/order/list/list.wxss */
+.active-color{
+  background: #192A3A;
+  border: 1px solid #192A3A;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: white;
+}
+.unactive-color{
+  background: #ffffff;
+  border: 1px solid #192A3A;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  color: black;
+}
+.go-center{
+  margin:7px auto;
+   display:flex;
+  justify-content:center;
+}
+.bigview{
+  display:flex;
+  margin-top:13px; 
+}
+.tab-box{
+  width:70%;
+  display:flex;
+  font-size:14px;
+  color:white;
+}
+.myorder{
+  height: 150rpx;
+  width: 57%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.ordername{
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+}
+.ordernum{
+  margin-top:5px;
+  font-size: 12px;
+  color: #666;
+}
+.orderprice{
+  margin-top:5px;
+  font-size: 14px;
+  color: #FF9C35;
+}
+.nearby {
+  height: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+.nearby .shop {
+	padding: 10rpx 0;
+	border-top: 1rpx solid #efefef;
+}
+.nearby .shop image {
+	/* width: 100%; */
+  margin-right: 10px;
+  border-radius: 5px;
+  width: 150rpx;
+	height: 150rpx;
+   float:left; 
+}
+.section-big {
+	padding: 20rpx;
+}
+.section-big .title {
+	position: relative;
+	text-align: center;
+	font-size: 32rpx;
+	font-weight: bold;
+	line-height: 2;
+	margin-bottom: 20rpx;
+}
+.section-big .title:before {
+	content: " ";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -180rpx;
+	width: 100rpx;
+	height: 1rpx;
+	background: #000;
+}
+.section-big .title:after {
+	content: " ";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: 80rpx;
+	width: 100rpx;
+	height: 1rpx;
+	background: #000;
+}
+/* 取款码 */
+.card-fetch{
+  width:27px;
+  background:#DE5F4B;
+  height:65px;
+  font-size:12px;
+  color:white;
+}
+.card-box{
+  display:flex;
+  width:35%;
+  height:65px;
+  background:#FEF9F4;
+  float: right;
+  margin-top: 5px;
+}
+.card-left-bar{
+  width:14px;
+  padding:7px 10px;
+}
+.number-card{
+  font-size:30px;
+  padding:0px 10px
+}
+.go-top-10{
+  margin-top:10px
+}
+
+/* 再来一单 */
+button.moreorder{
+  position: relative;
+  width: 180rpx;
+  height: 65rpx;
+  border: 1px solid #FF9C35;
+  background: #ffffff;
+  border-radius: 0.7;
+  font-size: 13px;
+  margin-right: 5rpx;
+}
+.navmoreorder{
+  width: 180rpx;
+  height: auto;
+  position: relative;
+  margin-left: auto;
+  margin-right: 5rpx;
+}
+/* 下拉加载更多 */
+.scrollcontent{  
+  flex: auto;   
+  position: relative;  
+}  
+ .scrollarea{
+  height: 500px;
+  /* border: 1px solid #DE5F4B; */
+} 
+::-webkit-scrollbar{
+  height: 0rpx;
+  width: 0rpx;
+  color: transparent;
+}
+.scrollcontent scrollview{  
+  position: absolute;  
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  top: 0;   
+}  
+.shop{
+  position: relative;  
+  display: flex;  
+  flex-direction: column;  
+  padding: 20rpx 0 20rpx 110rpx;  
+  overflow: hidden;  
+  border-bottom: 2rpx solid #e5e5e5;   
+}
+.loading{  
+  padding: 10rpx;  
+  text-align: center; 
+  margin: 1rpx 0rpx; 
+}  
+.loading:before{  
+  /* display: inline-block;   */
+  margin-right: 5rpx;  
+  vertical-align: middle;  
+  content: '';   
+  width: 40rpx;  
+  height: 40rpx;  
+  background-size: contain;   
+  animation: rotate 1s linear infinite;   
+}  
+.loading.complete:before{  
+  display: none;  
+}
+.imgs{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 180rpx;
+  margin-top: 8rpx;
+}
+.loadingview{
+  display: flex;
+}
+button.ordercanbtn{
+  position: relative;
+  float: right;
+  width: 190rpx;
+  height: 60rpx;
+  border: 1px solid #DE5F4B;
+  font-size: 15px;
+  margin-right: 0px;
+  background-color: white;
+  margin-top: 5rpx;
+  line-height: 60rpx;
+  /* padding-top: 5rpx; */
+}
+
+.waitNumbar{
+  position: relative;
+  float: left;
+  height: 60rpx;
+  color: #000;
+  font-size: 15px;
+  margin-left: 20rpx;
+  margin-top: 8rpx;
+  line-height: 60rpx;
+}
+
+
+
+/* 待付款取消订单弹框 */
+.drawer_screen {  
+  display: block;
+  width: 100%;  
+  height: 100%;  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  z-index: 1000;  
+  background: #000;  
+  opacity: 0.5;  
+  overflow: hidden;  
+}
+.exitif{
+  display: block;
+  position: fixed;
+  top: 400rpx;
+  left: 168rpx;
+  z-index: 1001;
+  width: 400rpx;
+  margin:0 auto;
+  background-color:#ffffff; 
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding-top: 10px;
+}
+.exittext{
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+  margin-left: 100rpx;
+}
+button.cancelexit{
+  float: left;
+  width: 200rpx;
+  font-size: 14px;
+  margin-top: 10px;
+}
+button.submitexit{
+  float: right;
+  width: 200rpx;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #fe0000;
+}
+button.ordercanbtn{
+  position: relative;
+  float: right;
+  width: 190rpx;
+  height: 60rpx;
+  border: 1px solid #DE5F4B;
+  font-size: 15px;
+  margin-right: 12px;
+  background-color: white;
+  margin-top: 5rpx;
+  line-height: 60rpx;
+  /* padding-top: 5rpx; */
+}
+/* 返回顶部 */
+.gobacknav {
+	position: fixed;
+	display: -webkit-flex;
+	right: 0;
+	/* bottom: 7rpx; */
+  bottom: 10rpx;
+	padding: 12rpx 0 0;
+	box-sizing: border-box;
+	z-index: 1;
+  text-align: center;
+  width: 150rpx;
+  height: 80rpx;
+   border-radius:20rpx 0 0 20rpx;  
+	/* background: #99ccff;  */
+  background-color: #feb70f;
+  /* -webkit-transition: background 0.5s ease-in-out; */
+}
+.gobacknav .icon {
+	width: 40rpx;
+	height: 40rpx;
+  margin: 0 auto;
+	vertical-align: top;
+  border: 1px solid #fe0000;
+  background-image: '/img/index/backarrow.png'
+}
+.gobacknav text{
+  color: #fff;
+  font-size: 35rpx;
+  /* border: 1px solid #feb70f; */
+  margin: 0 auto;
+  padding:0;
+  z-index: 3;
+} 

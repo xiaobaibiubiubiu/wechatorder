@@ -1,0 +1,110 @@
+ <include file="Public/head" />
+
+
+<body class="no-skin" >
+    <include file="Public/header" />
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('main-container', 'fixed')
+            } catch (e) {}
+        </script>
+
+        <include file="Public/sidebar" />
+        <div class="main-content">
+            <div class="main-content-inner">
+                <!-- #section:basics/content.breadcrumbs -->
+                <include file="Public/breadcrumbs" />
+
+                <!-- /section:basics/content.breadcrumbs -->
+                <div class="page-content">
+
+                    <include file="Public/set" />
+
+                    <!-- /section:settings.box -->
+
+                    <div class="row" >
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div class="row" >
+                                <div id="accordion-sysinfo" class="accordion-style1 panel-group col-sm-3" style="width: 1150px;">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading" >
+                                            <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse"
+                                               data-parent="#accordion-sysinfo" href="#sysinfo">{$s_name} &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                               <input type="button" value="返回" name="" onclick="window.history.back(); "> 
+
+                                                 </a> </h4>
+
+                                                
+                                                <div  id="box1">
+                                                    <div style="width: 100%;overflow: scroll;">
+                                                        <table style="border: 1px solid gray;margin: 15px;width: 1090px;font-size: 14px;height: 310px;">
+                                                            <tr style="background-color: rgb(248,248,248);">
+                                                                <td>菜名</td>
+                                                                <td>一月份</td>
+                                                                <td>二月份</td>
+                                                                <td>三月份</td>
+                                                                <td>四月份</td>
+                                                                <td>五月份</td>
+                                                                <td>六月份</td>
+                                                                <td>七月份</td>
+                                                                <td>八月份</td>
+                                                                <td>九月份</td>
+                                                                <td>十月份</td>
+                                                                <td>十一月份</td>
+                                                                <td>十二月份</td>
+                                                                <td>合计</td>
+                                                                <td>销售额</td>
+                                                            </tr>
+
+                                                            <foreach name="dishnumbymonth" item="v">
+                                                            <tr style="background-color: rgb(248,248,248);">
+                                                                <td>{$v.g_name}</td>
+                                                                <td>{$v.month01}</td>
+                                                                <td>{$v.month02}</td>
+                                                                <td>{$v.month03}</td>
+                                                                <td>{$v.month04}</td>
+                                                                <td>{$v.month05}</td>
+                                                                <td>{$v.month06}</td>
+                                                                <td>{$v.month07}</td>
+                                                                <td>{$v.month08}</td>
+                                                                <td>{$v.month09}</td>
+                                                                <td>{$v.month10}</td>
+                                                                <td>{$v.month11}</td>
+                                                                <td>{$v.month12}</td>
+                                                                <td>{$v.total}</td>
+                                                                <td>{$v.sum}</td>
+                                                            </tr>
+                                                            </foreach>
+
+                                                        </table>
+                                                    </div>
+                                                    <div style="width: 100%;height: auto;padding-top: 10px; margin-left: 50px;">
+                                                        
+                                                        备注:
+                                                        <p>
+                                                        <textarea rows="6" cols="140"></textarea>
+                                                        </p> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.main-content -->
+
+        <include file="Public/footer" />
+
+    </div>
+
+    <!-- /.main-container -->
+
+    <include file="Public/footerjs" />
+    <!-- inline scripts related to this page -->
+</body>
+</html>

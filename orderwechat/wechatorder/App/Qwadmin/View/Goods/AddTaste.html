@@ -1,0 +1,53 @@
+<include file="Public/head"/>
+<body class="no-skin">
+<include file="Public/header"/>
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <include file="Public/sidebar"/>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <!-- #section:basics/content.breadcrumbs -->
+            <include file="Public/breadcrumbs"/>
+
+            <!-- /section:basics/content.breadcrumbs -->
+            <div class="page-content">
+                <include file="Public/set"/>
+
+                <!-- /section:settings.box -->
+                <div class="row">
+                	
+                	<form method="post" action="AddTaste">
+                		<label>商品规格类型：
+                			<select name='t_type'>
+                                <foreach name="tt_list" item="v">
+                				<option value="{$v.tt_id}">{$v.tt_name}</option>
+                                </foreach>
+                			</select>
+                		</label>
+                		<br />
+                		<label>商品规格名称：
+                		<input type="text" name="t_name"/> 
+                		</label>
+                		<br /><br /><br />
+                		<button class="btn" type="submit">确认提交</button>
+                	</form>
+                	
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <include file="Public/footer"/>
+
+</div><!-- /.main-container -->
+
+<include file="Public/footerjs"/>
+
+
+</body>
+</html>

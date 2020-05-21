@@ -1,0 +1,34 @@
+<view class="container">
+	<view class="header">
+		<view class="search">
+			<image class="icon" src="/imgs/index/icon_search.png"/>
+			<input bindinput="inputSearch" placeholder="{{placeholder}}"  data-id='searchInfo' auto-focus/>
+		</view>
+		<button class="yellow" size="mini" hover-class="hover" loading="" plain="" disabled="{{!(searchWords.length||placeholder.length)}}"
+				bindtap="doSearch">搜索
+		</button>
+	</view>
+	<view id="result" class="result" hidden="{{!showResult}}">
+		<view class="filters">
+			<view class="filter {{filterId==1?'active':''}}" data-id="1" bindtap="tapFilter">综合排序<text class="v">↓</text>
+			</view>
+			<view class="filter {{filterId==2?'active':''}}" data-id="2" bindtap="tapFilter">销量最高<text class="v">↓</text>
+			</view>
+			<view class="filter {{filterId==3?'active':''}}" data-id="3" bindtap="tapFilter">距离最近<text class="v">↓</text>
+			</view>
+		</view>
+		<scroll-view scroll-y="true" >
+			<view class="shop" wx:for="{{shops}}" wx:key="id">
+				<navigator url="/page/index/index?uid={{item.uid}}">
+          <view class='mysale' data-id="{{item.uid}}">
+					  <image src="{{item.head}}"/>
+            <view class='shopname'>{{item.groupname}}</view>
+            <view class='shopinfo'>月销量：{{item.sales}}</view>
+			  	</view>
+        </navigator>
+			</view>
+			<view class="loading">已经到底啦</view>
+		</scroll-view>
+	</view>
+</view>
+            

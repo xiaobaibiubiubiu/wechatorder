@@ -1,0 +1,128 @@
+/* page/food/editfood.wxss */
+
+.section{
+  padding-left: 40rpx;
+  background-color: #fff;
+}
+.section input{
+  padding-top: 10rpx;
+}
+
+.picker{
+  padding-top: 15rpx;
+}
+.section__title{
+  margin-bottom: 5rpx;
+}
+.food-form{
+  font-size: 35rpx;
+  color: #333;
+}
+.bottom-space{
+  height: 80%;
+}
+.section .intro{
+  border: 1rpx solid #ccc;
+  border-radius: 5px;
+}
+.checkboxs{
+  margin-top:30rpx;
+}
+.checkboxs checkbox{
+  margin-left: 30rpx;
+}
+
+.basic-info{
+  font-size: 30rpx;
+  color: #333;
+  padding: 40rpx 30rpx 40rpx 10rpx;
+  position: relative;
+}
+.basic-info .basic-title{
+  padding-left: 20rpx;
+}
+.section{
+  padding-left: 40rpx;
+  position: relative;
+}
+.section input{
+  padding-bottom: 0;
+}
+.section__title{
+  margin-bottom: 5rpx;
+}
+.food-form{
+  font-size: 35rpx;
+  color: #333;
+}
+.bottom-space{
+  height: 92%;
+}
+.section .intro{
+  border: 1rpx solid #ccc;
+  border-radius: 5px;
+}
+.checkboxs{
+  margin-top:30rpx;
+}
+.checkboxs checkbox{
+  margin-left: 30rpx;
+}
+.btn-area{
+  width:500rpx; 
+  margin: 30rpx auto;
+}
+.btn-area button{
+  width: 200rpx;
+  margin:-20rpx auto;
+}
+.edit-btn{
+  width: 120rpx;
+  height: 60rpx;
+  float: right;
+  line-height: 60rpx; 
+  text-align: center;
+  font-size: 25rpx;
+  margin-bottom: 25rpx;
+  margin-left: 30rpx;
+}
+.show{
+  display: block;
+}
+.hide{
+ display: none;
+}
+.type-input input{
+  width: 80%;
+  padding:15rpx 10rpx; 
+}
+.type-input .edit{
+  position: absolute;
+  top:35rpx;
+  right: 100rpx;
+  /* border:1px solid red; */
+}
+.type-input .del{
+  position: absolute;
+  top:35rpx;
+  right: 30rpx;
+  /* border:1px solid red; */
+}
+.section .edit image,.section .del image{
+	width: 50rpx;
+	height: 50rpx;
+}
+.editing{
+  background-color: #ffc;
+}
+button[size=mini]{
+  margin-left: 0rpx !important;
+}
+image.img{
+  width: 400rpx;
+  height: 300rpx;
+  margin: 20rpx auto;
+}
+.show{
+  display: flex;
+}

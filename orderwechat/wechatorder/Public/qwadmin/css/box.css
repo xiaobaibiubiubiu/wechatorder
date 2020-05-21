@@ -1,0 +1,62 @@
+.bt1:hover{
+	background-color: orange;
+	position: relative;
+	right: 5px;
+
+}
+.bt2:hover{
+	background-color: green;
+	position: relative;
+	right: 5px;
+}
+.bt3:hover{
+	background-color: #ff83fa;
+	position: relative;
+	right: 5px;
+}
+.bt4:hover{
+	background-color: #FF00FF;
+	position: relative;
+	right: 5px;
+}
+.bt5:hover{
+	background-color: #00ffff;
+	position: relative;
+	right: 5px;
+}
+.bt6:hover{
+	background-color: #cdaa7d;
+	position: relative;
+	right: 5px;
+}
+.bt1{
+	background-color: rgb(255,183,100);
+ 	
+}
+.bt2{
+	background-color: rgb(135,184,127);
+ 	
+ }
+.bt3{
+	background-color: #ffe1ff;
+ 	
+ }
+.bt4{
+	background-color: rgb(235,135,172);
+ 	
+ }
+.bt5{
+	background-color: #87cefa;
+ 	
+ }
+.bt6{
+	background-color: #cdc9a5;
+ 	
+ }
+ 
+
+ 
+ 
+
+
+ 

@@ -1,0 +1,56 @@
+<view id="adduser">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="section">
+            <view class="c">姓名:</view>
+            <view class='form-group'>
+                <input type="text" class="input-text" bindblur='checkusername' name="username" placeholder="请输入姓名" />
+            </view>    
+            
+        </view>
+        <view class="section section_gap">
+            <view class="section__title">年龄:</view>
+            <view class='form-group'>
+                <input type="text" name="age" placeholder="请输入年龄" />
+            </view>    
+        </view>
+
+        <view class="section section_gap">
+            <view class="section__title">性别:</view>
+            <view class='form-group'>
+                <radio-group name="gender">
+                    <label><radio value="1"/>男</label>
+                    <label><radio value="0"/>女</label>
+                </radio-group>
+            </view>    
+        </view>
+
+        <view class="section">
+            <view class="c">手机号:</view>
+            <view class='form-group'>
+                <input type="text" class="input-text" name="mobile" placeholder="请输入手机号" />
+            </view>    
+        </view>
+
+        <view class="section">
+            <view class="c">密码:</view>
+            <view class='form-group'>
+                <input type="password" class="input-text" name="password" placeholder="请输入密码" />
+            </view>    
+        </view>
+
+        <view class="section">
+            <view class="c">确认密码:</view>
+            <view class='form-group'>
+                <input type="password" class="input-text" name="repassword" placeholder="请再次输入密码" />
+            </view>    
+        </view>
+
+        <view class="section btn-area">
+
+            <button formType="submit">提交</button>
+
+        </view>
+
+    </form>
+
+  </view>

@@ -1,0 +1,163 @@
+<view class="container">
+  <view class="header flex-row space-around">
+    <view class="tab {{nowtab=='全部菜品' ? 'tabActive' : ''}}" bindtap="switchTabs" data-nowtab='全部菜品'>全部菜品</view>
+    <view class="tab {{nowtab=='增加菜品' ? 'tabActive' : ''}}" bindtap="switchTabs" data-nowtab='增加菜品'>增加菜品</view>
+    <view class="tab {{nowtab=='菜品类型' ? 'tabActive' : ''}}" bindtap="switchTabs" data-nowtab='菜品类型'>菜品类型</view>
+  </view>
+
+  <view class="content" wx:if="{{nowtab=='全部菜品' || item.status==nowtab}}">
+    <view class="content-container" id="range">
+      <scroll-view class="classify-container" scroll-y="true">
+        <view class="classify {{classifySeleted==classify.gt_id?'active':''}}" wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" data-id="gs{{classify.gt_id}}" bindtap="tapClassify">
+          <view class="name">{{classify.gt_name}}</view>
+        </view>
+      </scroll-view>
+      <scroll-view  class="goods-container" scroll-into-view="{{classifyViewed}}" scroll-y="true" bindscroll="onGoodsScroll">
+        <view wx:for="{{goodsList}}" wx:for-item="classify" wx:key="gt_id" id="gs{{classify.gt_id}}">
+
+          <view class="title">{{classify.gt_name}}</view>
+
+          <view class="goods" wx:for="{{classify.goods}}" wx:for-item="goods" wx:key="*this">
+            <image class="pic" src="{{goods.pic_url}}"></image>
+            <view class="name ellipsis">{{goods.g_name}}</view>
+            <view class="sold">月售{{goods.sales}}</view>
+            <view class="price">{{coin}}{{goods.price}}</view>
+            <view class="addCart" bindtap="toEditFood" data-id="g{{goods.g_id}}" data-md="gs{{classify.gt_id}}" data-gindex="gidx{{index}}">
+              <image src="/imgs/manage/edit.png"></image>
+            </view>
+            <view class="delCart" bindtap="toDelFood" data-id="g{{goods.g_id}}" data-md="gs{{classify.gt_id}}" data-gindex="gidx{{index}}">
+              <image src="/imgs/manage/del.png"></image>
+            </view>
+          </view>
+
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <scroll-view scroll-y='true' class="content bottom-space" wx:if="{{nowtab=='增加菜品' || item.status==nowtab}}">
+    <form bindsubmit="submitNewFood" bindreset="formReset" data-id="addFoodForm" class="food-form">
+      <view class="section show">
+        <view class="section__title">菜名：{{addFood.name}}</view>
+        <input bindinput="bindKeyInput" bindreset="formReset" maxlength="10" placeholder="" type="text" name="name" />
+      </view>
+      <view class="section show">
+        <view class="section__title">菜品类型（请选择）：</view>
+
+         <picker bindchange="bindPickerChange" value="{{index}}" data-id="{{foodType[index].s_id}}" range="{{foodType}}" name="foodtype" range-key='gt_name'>
+          <view class="picker">
+            {{foodType[index].gt_name}}
+          </view>
+        </picker>
+      </view>
+      <view class="section show">
+        <view class="section__title">售价：{{addFood.sales}}</view>
+        <input bindinput="bindKeyInput" bindreset="formReset" placeholder="" type="number" name="sales" />
+      </view>
+      <view class="section">
+      <view class='show'>
+      <view class="section__title">展示图：{{addFood.img}}</view>
+        <button bindtap="upimg" class='up_img' size="mini">上传</button>
+      </view>
+        <image src='{{temp_path}}' class='imgview' hidden='{{imgview}}'></image>
+      </view>
+      <!-- <view class="section">
+        <view class="section__title">口味：</view>
+        <checkbox-group name="taste1" class="checkboxs">
+          <label>
+            <checkbox value="1" checked='true' />咸味</label>
+          <label>
+            <checkbox value="2" />淡味</label>
+          <label>
+            <checkbox value="3" />甜味</label>
+          <label>
+            <checkbox value="4" />酸味</label>
+        </checkbox-group>
+        <checkbox-group name="taste2" class="checkboxs">
+          <label>
+            <checkbox value="5" />无辣</label>
+          <label>
+            <checkbox value="6" />微辣</label>
+          <label>
+            <checkbox value="7" />中辣</label>
+          <label>
+            <checkbox value="8" />麻辣</label>
+        </checkbox-group>
+      </view>
+      <view class="section">
+        <view class="section__title">辅料：</view>
+        <checkbox-group name="accessories" class="checkboxs">
+          <label>
+            <checkbox value="0" checked='true' />暂无</label>
+          <label>
+            <checkbox value="1" />香菜</label>
+          <label>
+            <checkbox value="2" />葱</label>
+          <label>
+            <checkbox value="3" />蒜</label>
+        </checkbox-group>
+      </view> -->
+      <view class="section">
+        <view class="section__title">简介：{{addFood.introduce}}</view>
+        <view class="section">
+          <input name="intro" placeholder="请输入菜品描述" maxlength='150' />
+        </view>
+      </view>
+      <view class="btn-area flex-row space-around">
+        <button formType="submit" type="primary">提交</button>
+        <button formType="reset">重置</button>
+      </view>
+    </form>
+  </scroll-view>
+
+  <scroll-view scroll-y='true' class="content bottom-space" wx:if="{{nowtab=='菜品类型' || item.status==nowtab}}">
+    <view class="container">
+      <view class="basic-info">
+        <text class='basic-title'>本店菜品类型</text>
+        <button bindtap='toAddType' type='primary' class='edit-btn'>增加</button>
+      </view>
+
+      <view class="content {{addTypeTab==true?'show1':'hide'}}">
+        <form bindsubmit="submitNewType" bindreset="formReset" data-id="addTypeForm" class="food-form">
+          <view class="section">
+            <view class="section__title">类型名：</view>
+            <input bindinput="bindKeyInput" bindreset="formReset" maxlength="10" placeholder="" type="text" name="name" focus='true' />
+          </view>
+          <view class="btn-area flex-row space-around">
+            <button formType="submit" type="primary">提交</button>
+            <button bindtap='cancelAddType'>取消</button>
+          </view>
+        </form>
+      </view>
+      <view wx:for='{{foodType}}' wx:key="id" wx:for-item="item">
+        <view class="section type-input {{item.gt_id==editTypeid?'editing':''}}">
+          <input bindfocus="getFormerText" bindblur="getInputText" bindreset="formReset" maxlength="10" placeholder="" value="{{item.gt_name}}" data-id="{{item.gt_id}}" focus="{{item.gt_id==editTypeid?true:false}}" disabled="{{item.gt_id==editTypeid?false:true}}"
+          />
+          <view class="edit" bindtap="toEditType" data-id="{{item.gt_id}}">
+            <image src="/imgs/manage/edit.png"></image>
+          </view>
+          <view class="del" bindtap="toDelType" data-id="{{item.gt_id}}">
+            <image src="/imgs/manage/del.png"></image>
+          </view>
+        </view>
+      </view>
+      <view class="btn-area flex-row space-around {{waitEdit==false?'show':'hide'}}">
+        <button formType="submit" type="primary" bindtap="submitEditType">提交</button>
+        <button formType="primary" bindtap='cancelEditType'>取消</button>
+      </view>
+    </view>
+  </scroll-view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

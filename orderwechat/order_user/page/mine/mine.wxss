@@ -1,0 +1,193 @@
+.header {
+	background: #192A3A;
+	padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+.header .avatar {
+	display: block;
+	margin: 0 auto;
+	width: 160rpx;
+	height: 160rpx;
+	border-radius: 50%;
+	border: 2px solid #fee767;
+}
+.header .nickname {
+	color: #000;
+	font-size: 22px;
+	line-height: 2.4;
+	text-align: center;
+}
+/**获取用户信息**/
+button.login{
+  margin-top: 30px;
+  font-size: 14px;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 250rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.userinfo-nickname {
+  color: #ffffff;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.drawer_screen {  
+  width: 100%;  
+  height: 100%;  
+  position: fixed;  
+  top: 0;  
+  left: 0;  
+  z-index: 1000;  
+  background: #000;  
+  opacity: 0.5;  
+  overflow: hidden;  
+}
+.exitif{
+  position: fixed;
+  top: 400rpx;
+  left: 168rpx;
+  z-index: 1001;
+  width: 400rpx;
+  margin:0 auto;
+  background-color:#ffffff; 
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding-top: 10px;
+}
+.exittext{
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+  margin-left: 35px;
+}
+button.cancelexit{
+  float: left;
+  width: 95px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+button.submitexit{
+  float: right;
+  width: 95px;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #fe0000;
+}
+.section {
+	padding: 0;
+	color: #2e2e2e;
+	font-size: 30rpx;
+}
+.section .line {
+	margin-left: 30rpx;
+	padding-right: 30rpx;
+	line-height: 3;
+	border-bottom: 1px solid #efefef;
+}
+.section .line:last-child {
+	border-bottom: none;
+}
+.section .line:before {
+	content: '>';
+	float: right;
+	color: #aaa;
+	margin-left: 20rpx;
+}
+.section .line .tl {
+	float: right;
+	color: #aaa;
+}
+
+canvas{
+  position: fixed;
+  top: 0;
+  left: 999px;
+}
+.preview {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.6);
+  position:fixed;
+  top:0;
+  left: 0; 
+  z-index: 2;
+}
+.closeShare{
+  width: 75rpx;
+  height: 75rpx;
+  position:fixed;
+  top:0;
+  right: 30rpx; 
+  z-index: 2;
+}
+.preview .closeShare image{
+  margin-top: 20rpx;
+  width: 75rpx;
+  height: 75rpx;
+}
+.preview image{
+  width: 70%;
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  z-index: 3;
+  /* border: 1px dashed #fff; */
+}
+.qrcode{
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 auto;
+}
+  .preview button{
+  width: 90%;
+  top:15rpx;
+}  
+
+.operation{
+  position: absolute;
+  width: 585rpx;
+  bottom: 130rpx;
+  left: 80rpx;
+  /* border: 1px solid #fe0000; */
+}
+.operation view{
+  width: 75rpx;
+  height: 75rpx;
+  z-index: 5;
+  /* border: 1px solid yellow; */
+  padding: 0px;
+}
+.operation view image{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.shareBtn{
+ outline: none; 
+ width: 50%;
+ margin-top:70rpx;
+ font-size: 35rpx;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.space-around{
+  justify-content: space-around;
+}

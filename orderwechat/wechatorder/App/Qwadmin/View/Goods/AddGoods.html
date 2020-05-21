@@ -1,0 +1,110 @@
+<include file="Public/head"/>
+<body class="no-skin">
+<include file="Public/header"/>
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.check('main-container', 'fixed')
+        } catch (e) {
+        }
+    </script>
+
+    <include file="Public/sidebar"/>
+    <div class="main-content">
+        <div class="main-content-inner">
+            <!-- #section:basics/content.breadcrumbs -->
+            <include file="Public/breadcrumbs"/>
+
+            <!-- /section:basics/content.breadcrumbs -->
+            <div class="page-content">
+                <include file="Public/set"/>
+
+                <!-- /section:settings.box -->
+                <div class="row">
+                	
+                	<form method="post" enctype="multipart/form-data" action="AddGoods">
+                		<label>选择商家：
+                			<select name="store" id="boss">
+                                <option>请选择</option>
+                                <foreach name="list" item="v">
+                                    <option value="{$v.s_id}">{$v.s_storename}</option>
+                                 </foreach>
+                			</select>
+                		</label>
+                		<br />
+                		<label>商品类型：
+                			<select name="goodstype" id="type">
+                			</select>
+                		</label>
+                   
+                		<br />
+                		<label>商品名称：
+                			<input type="text" name="g_name" />
+                		</label>
+                		<br />
+                		<label>商品价格：
+                			<input type="text" name="price" />
+                		</label>
+                		<br />
+                		<label>
+                			<table>
+                				<tr>
+                					<td><span>图片：　　</span></td>
+                					<td><input type="file" name="pic_url"/></td>
+                				</tr>
+                			</table>
+                		</label>
+                		<br />
+                		<label><span style="vertical-align: top;">商品介绍：</span> 
+                			<textarea name="introduce" style="width: 300px;height: 100px;"></textarea>
+                		</label>
+                		<br />
+                		<label>商品规格：
+                            <foreach name="ttype" item="t">
+                			<input type="checkbox" name="taste[]" value="{$t.tt_id}">{$t.tt_name}　
+                        </foreach>
+                		</label>
+                		<br />
+                		<label>优惠券：
+                			<input type="text" name="accessories"/>
+                		</label>
+                		<br />
+                		<br />
+                		<br />
+                		<button class="btn" type="submit">确认提交</button>
+                	</form>
+                	
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+    <include file="Public/footer"/>
+
+</div><!-- /.main-container -->
+
+<include file="Public/footerjs"/>
+
+<script>
+    
+    $("#boss").change(function(){
+        var s_id=document.getElementById('boss').value;
+        $.ajax({
+            type:"post",
+            url:"selectGoodsType",
+            dataType:"json",
+            data:{s_id: s_id},
+            success:function(e){
+                $('#type').html('');
+                for(var i=0;i<e.length;i++){
+                    var option="<option value='"+e[i].gt_id+"'>"+e[i].gt_name+"</option>";
+                    $('#type').append(option);
+                }
+            },
+            error:function(){
+                console.log("提交失败");
+            }
+        });
+    });
+</script>
+</body>
+</html>

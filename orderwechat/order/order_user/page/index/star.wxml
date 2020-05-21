@@ -1,0 +1,11 @@
+<template name="stars">
+  <view class="rankcontauber">  
+    <view class="rankstars">  
+      <image src="/imgs/stars/fullstar.png"></image>  
+      <image src="/imgs/stars/fullstar.png"></image>  
+      <image src="/imgs/stars/fullstar.png"></image>  
+      <image src="/imgs/stars/fullstar.png"></image>  
+      <image src="/imgs/stars/fullstar.png"></image>  
+      </view> 
+  </view>  
+</template>  

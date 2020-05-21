@@ -1,0 +1,51 @@
+<view class="container">
+  <view class="basic-info">
+    <text class='basic-title'>您的基本信息</text>
+    <button bindtap='toEditInfo' type='primary' class='edit-btn'>编辑</button>
+  </view>
+  <scroll-view scroll-y='true' class="content bottom-space">
+    <form bindsubmit="formSubmit" bindreset="formReset" data-id="addFoodForm" class="food-form">
+      <view class="section" bindtap="upimg" >
+        <view class='shopIcon'>
+          <image class="userinfo-avatar" src="{{tempFilePaths}}" background-size="cover" mode="aspecFill"></image>
+        </view>
+        <view class='ownerName'>
+          <input bindinput="bindKeyInput" bindreset="formReset" maxlength="10" placeholder="" value="{{owner.s_name}}" name="oname" disabled="false" />
+        </view>
+      </view>
+      
+      <view class="section showpar">
+        <view class="section__title">店名：</view>
+        <input bindinput="bindKeyInput" bindreset="formReset" maxlength="10" placeholder="" focus="{{focus}}" value="{{owner.s_storename}}" name="sname" disabled="{{waitEdit}}" />
+      </view>
+      <view class="section showpar">
+        <view class="section__title">所属商圈：</view>
+        <picker mode="selector" class='picker' bindchange="bindGroupChange" range="{{tradeAreaInfo}}" range-key="groupname" value="{{index}}"  style='padding-top:15rpx;' disabled="{{waitEdit}}" name="tradeArea">
+          <view class="picker" name="tradeArea">
+            {{tradeAreaInfo[index].groupname}}
+          </view>
+        </picker>
+      </view>
+       <view class="section showpar">
+        <view class="section__title">餐盒费设置： {{coin}}</view>
+        <input bindinput="bindKeyInput" bindreset="formReset" style="width:100rpx" type="digit" maxlength="10" placeholder="" value="{{owner.pack_charge}}" name="pack_charge" disabled="{{waitEdit}}" />
+      </view>
+      <view wx:if="{{owner.exist_print==1}}">
+      <view class="section showpar">
+      <view class="section__title">打印机终端号:  </view>
+        <input bindinput="bindKeyInput" bindreset="formReset" style="width:300rpx" type="digit" maxlength="10" placeholder="" value="{{owner.printername}}" name="printername" disabled="{{waitEdit}}" /></view>
+        <view class="section showpar">
+<view class="section__title">打印机秘钥:  </view>
+        <input bindinput="bindKeyInput" bindreset="formReset" style="width:300rpx" type="digit" maxlength="12" placeholder="" value="{{owner.printerpsd}}" name="printerpsd" disabled="{{waitEdit}}" />
+</view>
+</view>
+
+      <view class="btn-area flex-row space-around {{waitEdit==false?'show':'hide'}}">
+        <button formType="submit" type="primary">提交修改</button>
+      </view>
+      <view class="btn-area flex-row space-around {{iconEdit==false?'hide':'show'}}">
+        <button type="primary" bindtap='updateIcon'>上传店标</button>
+      </view>
+    </form>
+  </scroll-view>
+</view>

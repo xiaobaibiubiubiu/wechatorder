@@ -1,0 +1,120 @@
+<view>
+  <view id="nearby" class="section section-big nearby">
+    <view class='go-center'>
+      <view class='tab-box'>
+        <view bindtap='changeTab' data-index="0" class="go-center {{tabIndex==0?'active-color':'unactive-color'}}" style='width:33%'>待付款</view>
+        <view bindtap='changeTab' data-index="1" class="go-center {{tabIndex==1?'active-color':'unactive-color'}}" style='width:33%'>待取餐</view>
+        <view bindtap='changeTab' data-index="2" class="go-center {{tabIndex==2?'active-color':'unactive-color'}}" style='width:33%'>已完成</view>
+      </view>
+      <view class='gobacknav' catchtap='returnTop'>
+        <text>回顶部</text>
+      </view>
+    </view>
+
+    <!-- 待付款部分 -->
+    <view wx:if="{{tabIndex==0}}" scroll-top='{{topNum}}'>
+      <scroll-view scroll-y="true" scroll-with-animation='true' class='scrollarea' scroll-top='{{topNum}}'>
+        <view class="shop" wx:for="{{order}}" wx:key="{{o_id}}">
+          <navigator url='../order/orderpay?o_id={{item.o_id}}&coin={{item.coin}}&taxRate={{item.taxRate}}'>
+            <view class='bigview'>
+              <view class='myorder'>
+                <image src="{{item.pic_url}}" class='myImg' />
+                <view class='ordername' style="white-space:nowrap;overflow: hidden;text-overflow: ellipsis;">{{item.s_storename}}</view>
+                <view class='ordernum'>数量:{{item.goods_count}}</view>
+                <view class='orderprice'>总价: {{item.coin}} {{item.total_money}}</view>
+              </view>
+              <view class="card-box">
+                <view class="card-fetch">
+                  <view class="card-left-bar">
+                    <label>订</label>
+                    <label>单</label>
+                    <label>号</label>
+                  </view>
+                </view>
+                <view>
+                  <view class='go-top-10'>
+                    <label class='number-card'>{{item.wait_num}}</label>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </navigator>
+
+          <view class='flex-row'>
+            <view class='waitNumbar'>前方等待人数：{{item.wait_count}}人</view>
+            <button class='ordercanbtn' bindtap='cancelorder' data-oid='{{item.o_id}}' data-sid='{{item.shop_id}}'>取消订单</button>
+          </view>
+          <!-- <view class="drawer_screen" data-statu="close" hidden='{{drawer}}'></view>
+          <view class='exitif' hidden='{{cancel}}'>
+            <text class='exittext'>是否取消订单?</text>
+            <button class='cancelexit' bindtap='cancel'>取消</button>
+            <button class='submitexit' bindtap='subcancel'>确定</button>
+          </view> -->
+        </view>
+        <view class="loading" hidden='{{hasorder}}'>暂无订单</view>
+      </scroll-view>
+    </view>
+
+
+    <!-- 待取餐部分 -->
+    <view wx:if="{{tabIndex==1}}">
+      <scroll-view scroll-y="true" scroll-with-animation='true' class='scrollarea' scroll-top='{{topNum}}'>
+        <view class="shop" wx:for="{{order}}" wx:key="{{o_id}}">
+          <navigator url='../order/ordernumber?o_id={{item.o_id}}&coin={{item.coin}}&taxRate={{item.taxRate}}'>
+            <view class='bigview'>
+              <view class='myorder'>
+                <image src="{{item.pic_url}}" class='myImg' />
+                <view class='ordername'>{{item.s_storename}}</view>
+                <view class='ordernum'>数量:{{item.goods_count}}</view>
+                <view class='orderprice'>总价: {{item.coin}} {{item.total_money}}</view>
+              </view>
+              <view class="card-box">
+                <view class="card-fetch">
+                  <view class="card-left-bar">
+                    <label>订</label>
+                    <label>单</label>
+                    <label>号</label>
+                  </view>
+                </view>
+                <view>
+                  <view class='go-top-10'>
+                    <label class='number-card'>{{item.wait_num}}</label>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </navigator>
+          <view class='waitNumbar'>前方等待人数：{{item.wait_count}}人</view>
+        </view>
+        <view class="loading" hidden='{{hasorder}}'>暂无订单</view>
+      </scroll-view>
+    </view>
+
+    <!-- 已完成部分 -->
+    <view class='scrollcontent' wx:if="{{tabIndex==2}}">
+      <scroll-view scroll-y="true" scroll-with-animation='true' class='scrollarea' bindscrolltolower="ScrollLower" scroll-top='{{topNum}}'>
+        <view class="shop" wx:for="{{orderdone}}" wx:key="{{o_id}}">
+          <navigator url='../order/orderdone?o_id={{item.o_id}}&shop_id={{item.shop_id}}&coin={{item.coin}}&taxRate={{item.taxRate}}'>
+            <view class='bigview'>
+              <view class='myorder'>
+                <image src="{{item.pic_url}}" class='myImg' />
+                <view class='ordername'>{{item.s_storename}}</view>
+                <view class='ordernum'>数量:{{item.goods_count}}</view>
+                <view class='orderprice'>总价: {{item.coin}} {{item.total_money}}</view>
+              </view>
+            </view>
+          </navigator>
+          <navigator class='navmoreorder' url='../shop/shop?o_id={{item.o_id}}&id={{item.shop_id}}&coin={{item.coin}}&taxRate={{item.taxRate}}'>
+            <button class='moreorder'>再来一单</button>
+          </navigator>
+        </view>
+        <view class='loadingview' hidden="{{Loading}}">
+          <image class='imgs' src='/imgs/order/5-121204193R0-50.gif'></image>
+          <view class="loading">正在载入更多...</view>
+        </view>
+        <view class="loading complete" hidden="{{LoadingComplete}}">已加载全部</view>
+      </scroll-view>
+    </view>
+
+  </view>
+</view>

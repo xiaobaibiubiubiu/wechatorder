@@ -1,0 +1,90 @@
+
+ <wxs module="filter">
+  var filters = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+module.exports = {
+  toFix: filters.toFix
+}
+</wxs> 
+<view class="container">
+	<view class="content-container" id="range">
+		 <scroll-view class="classify-container" scroll-y="true">
+			<view class="classify {{classifySeleted==classify.gt_id?'active':''}}" wx:for="{{goodsList}}" wx:for-item="classify" wx:key="id" data-id="gs{{classify.gt_id}}" bindtap="tapClassify">
+				<view class="name">{{classify.gt_name}}</view>
+			</view>
+		</scroll-view> 
+		<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed }}" bindscroll="onGoodsScroll">
+			<view wx:for="{{goodsList}}" wx:for-item="classify" wx:key="gt_id" id="gs{{classify.gt_id}}">
+				<view class="title">{{classify.gt_name}}</view>
+				<view class="goods" wx:for="{{classify.goods}}" wx:for-item="goods" wx:key="*this">
+					<image class="pic" src="{{goods.pic_url}}"></image>
+					<view class="name ellipsis">{{goods.g_name}}</view>
+					<view class="sold">月售{{goods.sales}}</view>
+					<view class="price">{{coin}}{{goods.price}}</view>
+					<view class="addCart" bindtap="tapAddCart" data-id="g{{goods.g_id}}" data-md="gs{{classify.gt_id}}" data-gindex="gidx{{index}}" >
+						<image src="/imgs/shop/plus1.png"></image>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+
+  <!--购物车底栏-->
+  <!-- 底部操作菜单 -->
+  <view class="operate-bar" wx:if="true">
+    <view class='gouwuche'>
+      <view style='padding:5px;display:flex'>
+        <i class="iconfont icon-gouwuchefill gouwuche-icon {{cart.total!=0?'activity-color':'' }}" bindtap="showCartList">
+          <span class="number-msg" wx:if="{{cart.list.length!=0}}">{{cart.count}}</span>
+        </i>
+
+        <view class='gouwuche-price' wx:if="{{cart.total==0}}">清单是空的</view>
+        <view class='gouwuche-price' style='color:white;font-size:18px' wx:if="{{cart.total!=0}}">{{coin}} {{filter.toFix(cart.total)}}</view>
+      </view>
+    </view>
+    <view class="submit-btn {{cart.total!=0?'activity-color-bg':'' }}" bindtap='goOrder'>
+      <view class="submit-btn-label {{cart.total!=0?'color-white':'' }}">选好了</view>
+    </view>
+  </view>
+</view>
+	<!-- 购物车 -->
+<view class="drawer_screen" bindtap="showCartList" data-statu="close" wx:if="{{showCart}}"></view>
+<view class="cartlist-float" wx:if="{{showCart}}">
+  <view class="cart-top">
+    <label class='label-cart-bar'>
+      <label style='padding:5px'>已选商品</label>
+    </label>
+    <label class='icon-clear' bindtap='clearCartList'>
+      <i class="iconfont icon-lajitong"></i>
+      <label class="label-clear">清空购物车</label>
+    </label>
+  </view>
+  <scroll-view scroll-y="true" class="{{cart.list.length>5?'cart-scroll-list':''}}">
+    <view class='cart-list-box' wx:for="{{cart.list}}" wx:key="unique" style='border-bottom:1px #E3E3E3 solid'>
+      <view class='list-info'>
+        <view>{{item.goodName}}</view>
+      </view>
+      <view class="list-detail">
+        <view class='changeNum'>
+          <label class='activity-color cart-foodPrice'>{{coin}} {{filter.toFix(item.goodPrice*item.count)}}</label>
+          <i class="iconfont icon-jian icon-li-circle big-circle" data-id="{{item.goodId}}" bindtap="tapReduceCart"></i>
+          <label class='cart-foodNum'>{{item.count}}</label>
+          <i class="iconfont icon-jiahao2fill activity-color font20 big-circle" data-id="g{{item.goodId}}"  bindtap="tapAddCart"></i>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<wxs module="filter">
+  var filters = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+module.exports = {
+  toFix: filters.toFix
+}
+</wxs> 

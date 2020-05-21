@@ -1,0 +1,11 @@
+.sum_shopname{
+	height: 140px;
+	width: 620px;
+}
+.shopname ul li{
+	list-style-type: none;
+}
+#saleDetail tr{
+	background-color: rgb(230,230,230);
+	border : 1px solid white;
+}

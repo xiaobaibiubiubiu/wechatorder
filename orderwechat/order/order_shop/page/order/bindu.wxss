@@ -1,0 +1,24 @@
+.login{
+  background: #fff;
+  margin-top: 15px;
+   padding: 5px 20px; 
+  border-bottom: 1px solid #efefef;
+  font-size: 16px;
+}
+.password{
+  background: #fff;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+button.log{
+  background: #192A3A;
+  color: white;
+  margin: 5px 20px;
+}
+.error{
+  width: 50%;
+  font-size: 15px;
+  color: red;
+  margin: 30px auto;
+}

@@ -1,0 +1,57 @@
+<!--pages/order/detail/detail.wxml-->
+<view>
+  <view class='go-center go-top-10' >
+    <view class="card-box">
+      <view class="card-fetch">
+        <view class="card-left-bar">
+          <label>取</label>
+          <label>餐</label>
+          <label>号</label>
+        </view>
+      </view>
+      <view>
+        <view class='go-top-10'>
+          <label class='number-card'>{{order.foodCode}}</label>
+          <label class='statu-card'>制作中</label>
+        </view>
+        <view class='note-card'>
+          菜品制作中,尽快为你服务
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 订单详情 -->
+  <view class='order-info'>
+    <view class='order-info-title'>订单详情</view>
+    <view class='cart-list-box' wx:for="{{cart.list}}" wx:key="unique" wx:for-index="id">
+      <view class='list-info'>
+        <view>{{cart.list[id].goodName}}</view>
+        <view class='list-info-size'>detail</view>
+      </view>
+      <view style='width:50%;padding:8px;'>
+        <view style='float:right'>
+          <view style='color:#A3A3A3'>x {{cart.list[id].count}}</view>
+          <view>¥ {{cart.list[id].goodPrice}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='order-sum'>
+      <label>总计 </label>
+      <label class='order-sum-number activity-color'>¥ {{cart.total}}</label>
+    </view>
+  </view>
+  <view class='order-info'>
+    <!-- 本应动态请求，在此写死 -->
+    <view class='order-info-title'>订单信息</view>
+    <view class='order-info-title flex-display' >订单号码
+      <text style='color:black;margin-left:10px'>{{order.orderNum}}</text>
+    </view>
+    <view class='order-info-title flex-display' >订单时间
+      <text class="order-info-li">{{order.orderPayTime}}</text>
+    </view>
+  </view>
+
+  <view style='margin-top:15px' class='go-center'>
+        <label class='note-exchange'>请凭此画面至取餐柜台领取商品</label>
+  </view>
+</view>

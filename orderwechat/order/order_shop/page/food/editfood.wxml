@@ -1,0 +1,79 @@
+<view class='container'>
+  <view class="basic-info">
+    <text class='basic-title'>修改该菜品信息</text>
+  </view>
+  <scroll-view scroll-y='true' class="content bottom-space">
+    <form bindsubmit="submitEditFood" bindreset="formReset" data-id="editFoodForm" class="food-form">
+      <view class="section">
+        <view class="section__title">菜名：</view>
+        <input bindinput="bindKeyInput" bindreset="formReset" maxlength="10" placeholder="" type="text" name="name" value="{{currentFood.g_name}}" focus='true'/>
+      </view>
+      <view class="section">
+        <view class="section__title">菜品类型（请选择）</view>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{foodType}}" name="foodtype" range-key='gt_name'>
+          <view class="picker">
+            {{foodType[index].gt_name}}
+          </view>
+        </picker>
+      </view>
+      <view class="section">
+        <view class="section__title">售价：</view>
+        <input bindinput="bindKeyInput" bindreset="formReset" placeholder="" type="number" name="sales" value='{{currentFood.price}}'/>
+      </view>
+      <view class="section">
+      <view class='show'>
+          <view class="section__title">展示图：</view>
+       <button bindtap="upimg" class='up_img' size="mini">上传</button>
+      </view>
+       <image class='img' wx:if="{{is_up}}" src="{{temp_path}}"></image>
+          <image class='img' wx:else src="{{currentFood.pic_url}}"></image>
+      </view>
+      <!-- <view class="section">
+        <view class="section__title">口味：</view>
+        <checkbox-group name="taste1" class="checkboxs">
+          <label>
+            <checkbox value="1" checked='true' />咸味</label>
+          <label>
+            <checkbox value="2" />淡味</label>
+          <label>
+            <checkbox value="3" />甜味</label>
+          <label>
+            <checkbox value="4" />酸味</label>
+        </checkbox-group>
+        <checkbox-group name="taste2" class="checkboxs">
+          <label>
+            <checkbox value="5" />无辣</label>
+          <label>
+            <checkbox value="6" />微辣</label>
+          <label>
+            <checkbox value="7" />中辣</label>
+          <label>
+            <checkbox value="8" />麻辣</label>
+        </checkbox-group>
+      </view>
+      <view class="section">
+        <view class="section__title">辅料：</view>
+        <checkbox-group name="accessories" class="checkboxs">
+          <label>
+            <checkbox value="0" checked='true' />暂无</label>
+          <label>
+            <checkbox value="1" />香菜</label>
+          <label>
+            <checkbox value="2" />葱</label>
+          <label>
+            <checkbox value="3" />蒜</label>
+        </checkbox-group>
+      </view> -->
+      <view class="section">
+        <view class="section__title">简介：</view>
+        <view class="section">
+          <input name="intro" placeholder="请输入菜品描述" maxlength='150' value='{{currentFood.introduce}}'/>
+        </view>
+      </view>
+      <view class="btn-area flex-row space-around">
+        <button formType="submit" type="primary">提交</button>
+        <button formType="reset">重置</button>
+      </view>
+    </form>
+  </scroll-view>
+</view>

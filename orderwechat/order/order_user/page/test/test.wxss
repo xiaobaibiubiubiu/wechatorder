@@ -1,0 +1,19 @@
+.section{
+display: flex;
+flex-direction: row;
+margin: 20rpx;
+}
+.section view{
+margin-right: 15rpx;
+}
+.section btn-area{
+margin: 20rpx;
+}
+
+.form-group{
+  
+     width:60%;
+}
+button{
+ width:100%;
+}

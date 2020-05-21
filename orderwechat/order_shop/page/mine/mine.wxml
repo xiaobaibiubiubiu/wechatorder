@@ -1,0 +1,43 @@
+<view class="container">
+	<view class="header">
+  <view class="userinfo">
+    <button class='login' wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 显示头像 </button>
+    <block wx:else>
+      <!-- <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text> -->
+      <open-data type="userAvatarUrl" class="userinfo-avatar" background-size="cover"></open-data>
+      <open-data type="userNickName" class="userinfo-nickname"></open-data>
+    </block>
+  </view>
+	</view>
+	 <!-- <view class="section">
+		<view class="line judgement">我的评价</view>
+	</view>  -->
+	<view class="section">
+		<!-- <view class="line judgement">帮助与反馈</view> -->
+		<view class="line judgement">在线客服<text class="tl">9:00 - 23:00</text></view>
+    <view class="line judgement" bindtap="foodScan" data-toTab="菜品概览"><text class="t1">菜品概览</text></view>
+  <view class="line judgement" bindtap="foodAdd" data-toTab="增加菜品" > <text class="t1">增加菜品</text></view>
+    <view class="line judgement" bindtap="infoManage" data-toTab="编辑个人信息"><text class="t1">编辑个人信息</text></view>
+    <view class="line judgement" bindtap="saleManage" data-toTab="销量统计"><text class="t1">销量统计</text></view>
+    <view class="line judgement" bindtap='Password' data-toTab="修改密码"><text class='t1'>修改密码</text></view>
+    
+    <view class="line judgement" hidden="{{!hasPrinter}}" bindtap='printer' data-toTab="管理打印机"><text class='t1'>管理打印机</text></view>
+	</view>
+  <!-- <button class='login' hidden='{{!hasUserInfo && canIUse}}' bindtap='exituser'>退出当前用户</button>
+ <view class="drawer_screen" data-statu="close" wx:if="{{showexit}}"></view> 
+  <view  class='exitif' hidden='{{exitif}}'>
+  <text class='exittext'>是否退出当前用户?</text>
+  <button class='cancelexit' bindtap='canexit'>取消</button>
+  <button class='submitexit' bindtap='subexit'>确定</button>
+  </view> -->
+
+  <button class='login' hidden='{{exitbind}}' bindtap='exitbind'>解除绑定</button>
+ <view class="drawer_screen" data-statu="close" wx:if="{{showexit}}"></view> 
+  <view  class='exitif' hidden='{{bindexit}}'>
+  <text class='exittext'>是否解除绑定?</text>
+  <button class='cancelexit' bindtap='bindcanexit'>取消</button>
+  <button class='submitexit' bindtap='bindexit'>确定</button>
+  </view>
+</view>
+         
